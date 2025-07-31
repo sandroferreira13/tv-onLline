@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Online - Assista + de 30.000 Canais, Filmes e Séries</title>
+    <meta name="description" content="TV Online Premium com + de 30.000 canais, filmes e séries em Full HD e 4K. Teste grátis por 24 horas!">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #111827 50%, #000000 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container-lg {
+            max-width: 1536px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-svg {
+            height: 8rem;
+            width: auto;
+        }
+
+        /* Subscribe Button */
+        .subscribe-section {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .subscribe-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subscribe-button:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
+            background: linear-gradient(45deg, #16a34a, #15803d);
+        }
+
+        .subscribe-button-icon {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #22c55e, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #22c55e;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-showcase {
+            position: relative;
+            margin: 0 auto 3rem;
+            max-width: 32rem;
+        }
+
+        .hero-showcase::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.2), rgba(59, 130, 246, 0.2));
+            filter: blur(3rem);
+        }
+
+        .hero-showcase-content {
+            position: relative;
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-item {
+            text-align: center;
+        }
+
+        .hero-item-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #22c55e;
+            margin: 0 auto 0.5rem;
+        }
+
+        .hero-item-text {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        /* Carousels Section */
+        .carousels-section {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-container {
+            margin-bottom: 3rem;
+        }
+
+        .carousel-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .carousel-title-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #22c55e;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: rgba(31, 41, 55, 0.3);
+            padding: 1rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1rem;
+        }
+
+        .carousel-item {
+            flex: 0 0 200px;
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .carousel-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+        }
+
+        .carousel-item-title {
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .carousel-item-year {
+            font-size: 0.75rem;
+            color: #22c55e;
+        }
+
+        .carousel-item-rating {
+            font-size: 0.75rem;
+            color: #fbbf24;
+            margin-top: 0.25rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(34, 197, 94, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav-prev {
+            left: 1rem;
+        }
+
+        .carousel-nav-next {
+            right: 1rem;
+        }
+
+        .carousel-nav-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-indicator {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: #22c55e;
+        }
+
+        .loading-skeleton {
+            background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(31, 41, 55, 0.7);
+        }
+
+        .feature-icon-wrapper {
+            background: rgba(34, 197, 94, 0.2);
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #22c55e;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #d1d5db;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 4rem 0;
+        }
+
+        .benefits-content {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .benefits-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .benefit-icon-wrapper {
+            background: rgba(34, 197, 94, 0.2);
+            padding: 0.75rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #22c55e;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: #d1d5db;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 0;
+        }
+
+        .pricing-content {
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            background: rgba(31, 41, 55, 0.7);
+        }
+
+        .pricing-card.popular {
+            border-color: rgba(34, 197, 94, 0.5);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        .badge-popular {
+            background: #22c55e;
+            color: black;
+        }
+
+        .badge-value {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-savings {
+            font-size: 0.875rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .pricing-features {
+            margin: 2rem 0;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-feature-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        .pricing-feature-text {
+            color: #d1d5db;
+        }
+
+        .pricing-feature-text.highlight {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .pricing-feature-text.premium {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .pricing-payment {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .instagram-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .instagram-text {
+            text-align: left;
+        }
+
+        .instagram-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .instagram-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: #e1306c;
+        }
+
+        .instagram-subtitle {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(225, 48, 108, 0.3);
+        }
+
+        .instagram-button-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .instagram-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .instagram-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 4rem 0;
+        }
+
+        .games-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .games-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: #22c55e;
+        }
+
+        .games-subtitle {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .games-video-container {
+            max-width: 48rem;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .games-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .games-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem;
+            color: white;
+        }
+
+        .games-overlay h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .games-overlay p {
+            color: #d1d5db;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+        }
+
+        .testimonials-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(31, 41, 55, 0.7);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #d1d5db;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-location {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .faq-container {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .faq-question-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #22c55e;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-question-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 4rem 0;
+        }
+
+        .cta-content {
+            max-width: 32rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .cta-disclaimer {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #22c55e;
+            color: black;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: #16a34a;
+            transform: scale(1.05);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .btn-icon-lg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .btn-shadow {
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #374151;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-svg {
+            height: 6rem;
+            width: auto;
+        }
+
+        .footer-text {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.75rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .benefits-title {
+                font-size: 2.5rem;
+            }
+
+            .pricing-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-title {
+                font-size: 2.5rem;
+            }
+
+            .logo-svg {
+                height: 10rem;
+            }
+
+            .footer-logo-svg {
+                height: 8rem;
+            }
+
+            .subscribe-button {
+                font-size: 1.75rem;
+                padding: 1.5rem 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                flex: 0 0 150px;
+            }
+            
+            .carousel-item img {
+                height: 225px;
+            }
+            
+            .carousel-nav {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            .carousel-nav-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+
+            .logo-svg {
+                height: 6rem;
+            }
+
+            .footer-logo-svg {
+                height: 4rem;
+            }
+
+            .instagram-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .instagram-text {
+                text-align: center;
+            }
+
+            .subscribe-button {
+                font-size: 1.25rem;
+                padding: 1rem 2rem;
+            }
+
+            .subscribe-button-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container, .container-lg {
+                padding: 0 0.75rem;
+            }
+
+            .hero-showcase-content {
+                padding: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .logo-svg {
+                height: 5rem;
+            }
+
+            .footer-logo-svg {
+                height: 3.5rem;
+            }
+
+            .subscribe-button {
+                font-size: 1.125rem;
+                padding: 0.875rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Auto-play indicator animation */
+        .carousel-indicator.active {
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { background: #22c55e; }
+            50% { background: rgba(34, 197, 94, 0.7); }
+            100% { background: #22c55e; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+                    <path fill="#00F43D" fill-opacity="0.98823529" d="M432.686 339.615C435.385 339.799 437.918 340.751 439.827 342.734C441.507 344.479 442.41 346.829 442.332 349.25C442.287 351.063 441.763 353.08 440.68 354.557C435.609 361.468 427.891 367.569 421.762 373.675L375.021 419.982L435.493 419.98C446.28 419.98 457.68 419.226 468.378 420.441C478.561 421.597 488.463 427.85 494.708 435.875C497.948 440.038 500.789 445.4 501.61 450.644C503.088 460.082 502.184 470.233 502.471 479.794C503.527 515.081 502.833 550.323 502.57 585.616L502.535 625.589C502.533 632.987 503.029 640.888 502.003 648.21C500.612 658.129 494.979 667.273 487.033 673.267C481.114 677.731 474.462 680.084 467.112 680.831C460.999 681.452 454.596 681.075 448.453 681.046L418.442 680.985L314.961 681.008L232.172 681.015C219.939 681.039 201.854 682.199 190.282 680.51C178.949 678.855 169.927 672.931 163.14 663.828C157.785 655.899 155.897 647.986 155.822 638.512L155.898 513.062L155.861 475.66C155.856 467.806 155.21 459.262 156.662 451.522C158.061 444.06 162.342 436.86 167.658 431.515C172.664 426.416 178.991 422.811 185.931 421.106C196.283 418.651 212.071 419.936 223.085 419.948L281.297 419.915L235.178 374.415C229.606 368.853 221.274 361.701 216.645 355.86C215.434 354.332 214.637 352.624 214.29 350.702C213.869 348.364 214.235 345.891 215.738 343.995C217.36 341.948 219.892 340.617 222.502 340.488C224.864 340.383 227.19 341.091 229.093 342.494C234.576 346.598 244.391 357.339 249.679 362.548L286.563 398.883C293.677 405.927 300.596 413.258 308.019 419.975L347.983 419.971C355.648 413.7 362.549 405.963 369.598 398.985L402.075 367.2C409.109 360.208 424.011 342.904 432.686 339.615ZM466.007 662.955C472.196 661.392 477.942 658.57 481.394 652.92C483.505 649.465 483.951 646.783 484.192 642.828C484.669 635.015 484.34 627.017 484.329 619.182L484.115 570.318L484.307 488.705C484.32 481.798 485.362 460.118 483.738 454.503C481.761 447.669 476.435 442.988 470.315 439.802C468.429 438.82 466.744 438.153 464.621 438.059C447.408 437.294 429.903 437.993 412.665 438.032L320.744 438.068L236.792 438.084C222.671 438.074 208.286 437.462 194.197 438.112C187.406 439.431 181.526 442.682 177.573 448.538C175.018 452.323 174.515 456.238 174.239 460.697C173.443 473.556 174.125 486.842 174.142 499.739L174.108 572.997L174.08 620.3C174.08 627.957 173.037 637.694 174.735 645.138C175.956 650.491 179.626 656.481 184.42 659.34C187.411 661.124 190.973 662.536 194.451 662.807C205.514 663.667 217.116 662.991 228.233 662.99L293.718 662.977L408.299 662.974C427.514 662.976 446.797 663.313 466.007 662.955Z"/>
+                    <path fill="#00F43D" fill-opacity="0.98823529" d="M273.124 480.565C274.617 480.595 276.215 480.595 277.667 480.976C284.705 482.821 299.96 492.583 307.139 496.425L368.938 529.632C378.267 534.713 388.087 539.507 397.128 545.073C398.639 546.002 400.043 547.098 400.925 548.674C402.309 551.148 402.427 554.992 401.632 557.662C401.084 559.498 400.099 561.119 398.664 562.394C394.015 566.527 387.279 569.53 381.873 572.592L351.747 589.612L284.762 627.111C280.431 629.493 276.994 631.238 271.967 629.62C269.006 628.666 266.445 626.695 265.042 623.882C264.296 622.386 264.005 620.932 263.929 619.276C263.045 599.987 263.89 580.302 263.903 560.98C263.91 550.395 262.84 492.929 264.552 488.162C266.05 483.99 269.324 482.247 273.124 480.565ZM282.838 606.831C289.927 602.302 297.457 598.465 304.84 594.442C316.855 587.896 328.925 581.322 340.683 574.324C352.031 567.81 364.207 561.748 375.09 554.539C360.275 544.904 343.87 537.043 328.281 528.689C313.141 520.575 298.163 511.755 282.672 504.35C283.532 517.461 282.89 530.909 282.808 544.061C282.665 564.984 282.674 585.908 282.838 606.831Z"/>
+                    <path fill="#00F43D" d="M729.101 433.385L757.796 433.323L749.482 456.025L714.556 553.038C704.777 553.005 694.776 552.55 685.032 553.342C678.075 538.344 673.133 521.806 667.592 506.193L641.538 433.352C650.856 433.346 660.174 433.39 669.492 433.485C672.924 442.683 675.23 452.449 678.413 461.768C685.341 482.056 692.749 502.187 699.571 522.512C703.532 514.329 706.089 504.677 709.063 496.07C716.251 475.27 723.095 454.559 729.101 433.385Z"/>
+                    <path fill="#00F43D" d="M594.138 433.248C607.411 433.305 620.684 433.273 633.957 433.153L633.959 457.438C622.317 457.395 610.674 457.423 599.032 457.52C599.036 489.065 598.144 521.763 599.304 553.207C593.601 553.555 587.835 553.277 582.125 553.175C579.047 553.115 575.956 553.242 572.878 553.311L573.008 457.462L538.886 457.515C538.852 449.462 538.862 441.408 538.915 433.354C557.266 432.782 575.77 433.26 594.138 433.248Z"/>
+                    <path fill="#00F43D" d="M565.393 575.637C574.629 574.37 584 575.603 591.926 580.708C600.063 585.95 605.256 594.001 607.22 603.43C609.421 613.993 608.185 627.789 602.113 636.958C596.494 645.443 587.79 649.48 578.124 651.472C568.28 652.4 558.005 651.251 549.617 645.636C541.81 640.411 537.156 632.331 535.412 623.218C533.25 611.924 534.61 599.608 541.241 589.971C547.25 581.238 555.251 577.529 565.393 575.637ZM573.278 637.951C578.891 636.992 583.208 635.435 586.648 630.553C591.365 623.858 592.178 613.74 590.516 605.881C589.38 600.507 586.843 595.81 582.159 592.751C578.719 590.504 574.076 589.315 569.982 589.617C563.937 590.784 559.252 592.446 555.681 597.868C551.372 604.411 550.797 614.455 552.499 622C553.672 627.199 556.714 632.082 561.258 634.973C565.029 637.372 568.873 638.034 573.278 637.951Z"/>
+                    <path fill="#00F43D" d="M617.926 576.908L636.013 576.989C639.885 582.602 643.141 588.741 646.612 594.618L665.051 625.77C664.925 609.505 664.892 593.239 664.953 576.973L681.878 576.966C681.779 583.518 682.069 648.757 681.479 650.246C681.371 650.52 681.103 650.699 680.915 650.925L663.121 650.928C652.306 635.067 644.38 617.188 634.021 600.965C634.362 617.627 634.505 634.291 634.451 650.956C628.964 650.93 623.477 650.954 617.99 651.03C617.723 626.405 617.024 601.507 617.926 576.908Z"/>
+                    <path fill="#00F43D" d="M779.964 576.935C786.195 576.93 792.425 576.973 798.655 577.064C802.353 582.099 805.133 588.087 808.287 593.511L827.864 626.954L827.389 577.002L843.839 576.993C843.826 583.862 844.474 649.302 843.359 650.967L825.283 650.982C820.195 641.89 814.721 633.023 809.543 623.982C804.976 616.008 800.704 607.849 795.921 600.004C796.466 616.987 796.671 633.979 796.537 650.971C791.03 650.942 785.523 650.975 780.018 651.071C779.773 626.386 779.67 601.618 779.964 576.935Z"/>
+                    <path fill="#00F43D" fill-opacity="0.98823529" d="M856.733 576.96C873.166 577.127 889.617 576.961 906.053 576.955L906.043 591.048C895.597 591.95 884.529 591.242 874.018 591.391L874.125 605.931L904.818 605.96C904.634 610.65 904.703 615.376 904.659 620.071C894.977 620.512 885.098 620.113 875.399 620.118L874.664 620.191C872.859 622.904 874.024 632.83 874.079 636.376L905.994 636.444L905.986 650.919C889.656 651.129 873.326 650.845 856.999 651.073C856.562 626.386 856.962 601.656 856.733 576.96Z"/>
+                    <path fill="#00F43D" d="M693.992 576.982L711.14 576.992L711.244 635.77C721.434 636.085 731.67 635.879 741.866 635.868L741.802 650.95C725.832 651.063 709.821 650.734 693.86 651.154L693.992 576.982Z"/>
+                    <path fill="#00F43D" d="M750.315 576.954C756.2 576.966 762.085 576.936 767.97 576.864C767.533 601.524 767.931 626.261 767.895 650.93L750.276 650.979L750.315 576.954Z"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subscribe Button 1 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    ASSISTA + DE 30.000 CANAIS, FILMES E SÉRIES!
+                </h1>
+
+                <p class="hero-subtitle">
+                    Conteúdo em FULL HD, 4K, Estável e sem Travamentos.
+                </p>
+
+                <div class="hero-showcase">
+                    <div class="hero-showcase-content">
+                        <div class="hero-grid">
+                            <div class="hero-item">
+                                <i data-lucide="film" class="hero-item-icon"></i>
+                                <p class="hero-item-text">Filmes</p>
+                            </div>
+                            <div class="hero-item">
+                                <i data-lucide="tv" class="hero-item-icon"></i>
+                                <p class="hero-item-text">Séries</p>
+                            </div>
+                            <div class="hero-item">
+                                <i data-lucide="zap" class="hero-item-icon"></i>
+                                <p class="hero-item-text">Ao Vivo</p>
+                            </div>
+                            <div class="hero-item">
+                                <i data-lucide="monitor" class="hero-item-icon"></i>
+                                <p class="hero-item-text">Esportes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 2 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Carousels Section -->
+    <section class="carousels-section">
+        <div class="container-lg">
+            <!-- Movies Carousel -->
+            <div class="carousel-container">
+                <h2 class="carousel-title">
+                    <i data-lucide="film" class="carousel-title-icon"></i>
+                    Filmes Populares
+                </h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="movies-track">
+                        <!-- Movies will be loaded here -->
+                    </div>
+                    <button class="carousel-nav carousel-nav-prev" onclick="navigateCarousel('movies', -1)">
+                        <i data-lucide="chevron-left" class="carousel-nav-icon"></i>
+                    </button>
+                    <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('movies', 1)">
+                        <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="movies-indicators"></div>
+            </div>
+
+            <!-- TV Shows Carousel -->
+            <div class="carousel-container">
+                <h2 class="carousel-title">
+                    <i data-lucide="tv" class="carousel-title-icon"></i>
+                    Séries Populares
+                </h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="series-track">
+                        <!-- TV Shows will be loaded here -->
+                    </div>
+                    <button class="carousel-nav carousel-nav-prev" onclick="navigateCarousel('series', -1)">
+                        <i data-lucide="chevron-left" class="carousel-nav-icon"></i>
+                    </button>
+                    <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('series', 1)">
+                        <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="series-indicators"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 3 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container-lg">
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="film" class="feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">Catálogo com + de 30.000 conteúdos</h3>
+                    <p class="feature-description">
+                        Filmes, séries, canais ao vivo e esportes. Todo o entretenimento que você precisa em um só lugar.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="smartphone" class="feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">Compatibilidade total</h3>
+                    <p class="feature-description">
+                        Funciona em Smart TV, TV Box, Celular, PC e Fire Stick. Assista onde e quando quiser.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="message-circle" class="feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">Teste grátis e suporte via WhatsApp</h3>
+                    <p class="feature-description">Atendimento rápido e profissional. Teste nosso serviço sem compromisso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 4 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <h2 class="benefits-title">Por que escolher nosso IPTV?</h2>
+
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="shield" class="benefit-icon"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Estabilidade Garantida</h3>
+                            <p>Servidores de alta performance para transmissão sem travamentos</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="clock" class="benefit-icon"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Suporte 24/7</h3>
+                            <p>Atendimento especializado disponível a qualquer hora</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="zap" class="benefit-icon"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Ativação Imediata</h3>
+                            <p>Comece a assistir em poucos minutos após a contratação</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon-wrapper">
+                            <i data-lucide="monitor" class="benefit-icon"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Qualidade Premium</h3>
+                            <p>Transmissão em Full HD e 4K para a melhor experiência</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 5 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-content">
+                <h2 class="pricing-title">Escolha Seu Plano</h2>
+                <p class="pricing-subtitle">Planos flexíveis para todas as necessidades</p>
+
+                <div class="pricing-grid">
+                    <!-- Plano 1 Mês -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Plano Mensal</h3>
+                            <div class="pricing-price">R$ 29,90</div>
+                            <p class="pricing-period">por mês</p>
+                        </div>
+
+                        <div class="pricing-features">
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">+ de 30.000 canais</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Qualidade Full HD e 4K</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Suporte 24/7</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Todos os dispositivos</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de contratar o Plano Mensal de TV Online por R$ 29,90" class="btn btn-primary btn-full">
+                            <i data-lucide="message-circle" class="btn-icon"></i>
+                            Contratar 1 Mês
+                        </a>
+                    </div>
+
+                    <!-- Plano 3 Meses -->
+                    <div class="pricing-card popular">
+                        <div class="pricing-badge badge-popular">MAIS POPULAR</div>
+                        <div class="pricing-header">
+                            <h3>Plano Trimestral</h3>
+                            <div class="pricing-price">R$ 79,90</div>
+                            <p class="pricing-period">3 meses</p>
+                            <p class="pricing-savings">Economize R$ 9,80</p>
+                        </div>
+
+                        <div class="pricing-features">
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">+ de 30.000 canais</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Qualidade Full HD e 4K</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Suporte 24/7</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Todos os dispositivos</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text highlight">Suporte prioritário</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de contratar o Plano Trimestral de TV Online por R$ 79,90" class="btn btn-primary btn-full btn-shadow">
+                            <i data-lucide="message-circle" class="btn-icon"></i>
+                            Contratar 3 Meses
+                        </a>
+                    </div>
+
+                    <!-- Plano 6 Meses -->
+                    <div class="pricing-card">
+                        <div class="pricing-badge badge-value">MELHOR VALOR</div>
+                        <div class="pricing-header">
+                            <h3>Plano Semestral</h3>
+                            <div class="pricing-price">R$ 149,90</div>
+                            <p class="pricing-period">6 meses</p>
+                            <p class="pricing-savings">Economize R$ 29,50</p>
+                        </div>
+
+                        <div class="pricing-features">
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">+ de 30.000 canais</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Qualidade Full HD e 4K</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Suporte 24/7</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text">Todos os dispositivos</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text highlight">Suporte prioritário</span>
+                            </div>
+                            <div class="pricing-feature">
+                                <div class="pricing-feature-dot"></div>
+                                <span class="pricing-feature-text premium">Canais premium inclusos</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de contratar o Plano Semestral de TV Online por R$ 149,90" class="btn btn-primary btn-full">
+                            <i data-lucide="message-circle" class="btn-icon"></i>
+                            Contratar 6 Meses
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-payment">
+                    💳 Aceitamos PIX, Cartão de Crédito e Débito • 🔒 Pagamento 100% Seguro
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 6 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram-section">
+        <div class="container">
+            <div class="instagram-content">
+                <div class="instagram-text">
+                    <h2 class="instagram-title">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                        Siga-nos no Instagram
+                    </h2>
+                    <p class="instagram-subtitle">
+                        Fique por dentro das novidades, promoções exclusivas e conteúdos em primeira mão!
+                    </p>
+                    <a href="https://instagram.com/tvonline" class="instagram-button" target="_blank">
+                        <i data-lucide="instagram" class="instagram-button-icon"></i>
+                        Seguir @tvonline
+                    </a>
+                </div>
+                <div class="instagram-image">
+                    <img src="/images/iptv-interface.jpg" alt="Interface do IPTV TV Online em Smart TV" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 7 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section">
+        <div class="container">
+            <h2 class="games-title">
+                <i data-lucide="gamepad-2" class="games-icon"></i>
+                Jogos do Dia
+            </h2>
+            <p class="games-subtitle">
+                Acompanhe os principais jogos e eventos esportivos ao vivo em alta qualidade
+            </p>
+            <div class="games-video-container">
+                <video class="games-video" controls poster="/placeholder.svg?height=400&width=800&text=Jogos+do+Dia">
+                    <source src="/placeholder-video.mp4" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+                <div class="games-overlay">
+                    <h3>Transmissões Esportivas ao Vivo</h3>
+                    <p>Assista aos principais campeonatos e jogos em tempo real com qualidade 4K</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 8 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="testimonials-title">O que nossos clientes dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Excelente qualidade de imagem e som! Nunca tive problemas com travamentos. O suporte é muito rápido e eficiente. Recomendo!"
+                    </p>
+                    <div class="testimonial-author">Carlos Silva</div>
+                    <div class="testimonial-location">São Paulo, SP</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Melhor IPTV que já usei! Funciona perfeitamente na minha Smart TV e no celular. Catálogo incrível com filmes e séries atualizados."
+                    </p>
+                    <div class="testimonial-author">Maria Santos</div>
+                    <div class="testimonial-location">Rio de Janeiro, RJ</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Preço justo e qualidade excepcional. Assisto todos os jogos do meu time em HD sem travamentos. Atendimento nota 10!"
+                    </p>
+                    <div class="testimonial-author">João Oliveira</div>
+                    <div class="testimonial-location">Belo Horizonte, MG</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Instalação super fácil e rápida. Em poucos minutos já estava assistindo. A variedade de canais é impressionante!"
+                    </p>
+                    <div class="testimonial-author">Ana Costa</div>
+                    <div class="testimonial-location">Porto Alegre, RS</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Uso há mais de 1 ano e nunca me decepcionou. Qualidade 4K real, suporte sempre disponível. Vale cada centavo!"
+                    </p>
+                    <div class="testimonial-author">Roberto Lima</div>
+                    <div class="testimonial-location">Salvador, BA</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Cancelei minha TV a cabo depois de conhecer o TV Online. Muito mais barato e com muito mais conteúdo!"
+                    </p>
+                    <div class="testimonial-author">Fernanda Rocha</div>
+                    <div class="testimonial-location">Brasília, DF</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 9 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="faq-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Como funciona o IPTV?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            O IPTV (Internet Protocol Television) transmite conteúdo de TV através da internet. Você precisa apenas de uma conexão estável e um dispositivo compatível para assistir a milhares de canais, filmes e séries em alta qualidade.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Em quais dispositivos posso assistir?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nosso serviço funciona em Smart TVs, TV Box, Fire Stick, celulares Android e iOS, tablets, computadores e notebooks. Compatível com os principais sistemas operacionais.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Qual velocidade de internet preciso?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Recomendamos no mínimo 10 Mbps para qualidade HD e 25 Mbps para 4K. Uma conexão estável é mais importante que alta velocidade. Funciona com qualquer provedor de internet.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Como é feita a instalação?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            A instalação é muito simples! Após a contratação, enviamos um tutorial passo a passo via WhatsApp. Em poucos minutos você estará assistindo. Nosso suporte também pode ajudar remotamente se necessário.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Posso assistir em vários dispositivos ao mesmo tempo?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sim! Cada plano permite assistir em até 2 dispositivos simultaneamente. Para mais dispositivos, consulte nossos planos familiares via WhatsApp.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        O teste grátis é realmente gratuito?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sim! Oferecemos 24 horas de teste completamente grátis, sem compromisso e sem cobrança de cartão. É uma oportunidade para você conhecer nosso serviço antes de contratar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Como funciona o suporte técnico?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nosso suporte funciona 24/7 via WhatsApp. Nossa equipe técnica especializada está sempre pronta para ajudar com instalação, configuração ou qualquer dúvida que você tenha.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Quais formas de pagamento vocês aceitam?
+                        <i data-lucide="chevron-down" class="faq-question-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Aceitamos PIX (desconto especial), cartão de crédito, cartão de débito e transferência bancária. O pagamento é 100% seguro e você recebe o acesso imediatamente após a confirmação.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Button 10 -->
+    <section class="subscribe-section">
+        <div class="container">
+            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
+                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
+                Assina Já
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-box">
+                    <h2 class="cta-title">Experimente Grátis Agora!</h2>
+                    <p class="cta-subtitle">Teste nosso serviço por 24 horas sem compromisso</p>
+
+                    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar o teste grátis de 24 horas do TV Online" class="btn btn-primary btn-lg btn-shadow">
+                        <i data-lucide="message-circle" class="btn-icon-lg"></i>
+                        Solicitar Teste Grátis no WhatsApp
+                    </a>
+                </div>
+
+                <p class="cta-disclaimer">* Teste válido por 24 horas • Sem compromisso • Ativação imediata</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+                        <path fill="#00F43D" fill-opacity="0.98823529" d="M432.686 339.615C435.385 339.799 437.918 340.751 439.827 342.734C441.507 344.479 442.41 346.829 442.332 349.25C442.287 351.063 441.763 353.08 440.68 354.557C435.609 361.468 427.891 367.569 421.762 373.675L375.021 419.982L435.493 419.98C446.28 419.98 457.68 419.226 468.378 420.441C478.561 421.597 488.463 427.85 494.708 435.875C497.948 440.038 500.789 445.4 501.61 450.644C503.088 460.082 502.184 470.233 502.471 479.794C503.527 515.081 502.833 550.323 502.57 585.616L502.535 625.589C502.533 632.987 503.029 640.888 502.003 648.21C500.612 658.129 494.979 667.273 487.033 673.267C481.114 677.731 474.462 680.084 467.112 680.831C460.999 681.452 454.596 681.075 448.453 681.046L418.442 680.985L314.961 681.008L232.172 681.015C219.939 681.039 201.854 682.199 190.282 680.51C178.949 678.855 169.927 672.931 163.14 663.828C157.785 655.899 155.897 647.986 155.822 638.512L155.898 513.062L155.861 475.66C155.856 467.806 155.21 459.262 156.662 451.522C158.061 444.06 162.342 436.86 167.658 431.515C172.664 426.416 178.991 422.811 185.931 421.106C196.283 418.651 212.071 419.936 223.085 419.948L281.297 419.915L235.178 374.415C229.606 368.853 221.274 361.701 216.645 355.86C215.434 354.332 214.637 352.624 214.29 350.702C213.869 348.364 214.235 345.891 215.738 343.995C217.36 341.948 219.892 340.617 222.502 340.488C224.864 340.383 227.19 341.091 229.093 342.494C234.576 346.598 244.391 357.339 249.679 362.548L286.563 398.883C293.677 405.927 300.596 413.258 308.019 419.975L347.983 419.971C355.648 413.7 362.549 405.963 369.598 398.985L402.075 367.2C409.109 360.208 424.011 342.904 432.686 339.615ZM466.007 662.955C472.196 661.392 477.942 658.57 481.394 652.92C483.505 649.465 483.951 646.783 484.192 642.828C484.669 635.015 484.34 627.017 484.329 619.182L484.115 570.318L484.307 488.705C484.32 481.798 485.362 460.118 483.738 454.503C481.761 447.669 476.435 442.988 470.315 439.802C468.429 438.82 466.744 438.153 464.621 438.059C447.408 437.294 429.903 437.993 412.665 438.032L320.744 438.068L236.792 438.084C222.671 438.074 208.286 437.462 194.197 438.112C187.406 439.431 181.526 442.682 177.573 448.538C175.018 452.323 174.515 456.238 174.239 460.697C173.443 473.556 174.125 486.842 174.142 499.739L174.108 572.997L174.08 620.3C174.08 627.957 173.037 637.694 174.735 645.138C175.956 650.491 179.626 656.481 184.42 659.34C187.411 661.124 190.973 662.536 194.451 662.807C205.514 663.667 217.116 662.991 228.233 662.99L293.718 662.977L408.299 662.974C427.514 662.976 446.797 663.313 466.007 662.955Z"/>
+                        <path fill="#00F43D" fill-opacity="0.98823529" d="M273.124 480.565C274.617 480.595 276.215 480.595 277.667 480.976C284.705 482.821 299.96 492.583 307.139 496.425L368.938 529.632C378.267 534.713 388.087 539.507 397.128 545.073C398.639 546.002 400.043 547.098 400.925 548.674C402.309 551.148 402.427 554.992 401.632 557.662C401.084 559.498 400.099 561.119 398.664 562.394C394.015 566.527 387.279 569.53 381.873 572.592L351.747 589.612L284.762 627.111C280.431 629.493 276.994 631.238 271.967 629.62C269.006 628.666 266.445 626.695 265.042 623.882C264.296 622.386 264.005 620.932 263.929 619.276C263.045 599.987 263.89 580.302 263.903 560.98C263.91 550.395 262.84 492.929 264.552 488.162C266.05 483.99 269.324 482.247 273.124 480.565ZM282.838 606.831C289.927 602.302 297.457 598.465 304.84 594.442C316.855 587.896 328.925 581.322 340.683 574.324C352.031 567.81 364.207 561.748 375.09 554.539C360.275 544.904 343.87 537.043 328.281 528.689C313.141 520.575 298.163 511.755 282.672 504.35C283.532 517.461 282.89 530.909 282.808 544.061C282.665 564.984 282.674 585.908 282.838 606.831Z"/>
+                        <path fill="#00F43D" d="M729.101 433.385L757.796 433.323L749.482 456.025L714.556 553.038C704.777 553.005 694.776 552.55 685.032 553.342C678.075 538.344 673.133 521.806 667.592 506.193L641.538 433.352C650.856 433.346 660.174 433.39 669.492 433.485C672.924 442.683 675.23 452.449 678.413 461.768C685.341 482.056 692.749 502.187 699.571 522.512C703.532 514.329 706.089 504.677 709.063 496.07C716.251 475.27 723.095 454.559 729.101 433.385Z"/>
+                        <path fill="#00F43D" d="M594.138 433.248C607.411 433.305 620.684 433.273 633.957 433.153L633.959 457.438C622.317 457.395 610.674 457.423 599.032 457.52C599.036 489.065 598.144 521.763 599.304 553.207C593.601 553.555 587.835 553.277 582.125 553.175C579.047 553.115 575.956 553.242 572.878 553.311L573.008 457.462L538.886 457.515C538.852 449.462 538.862 441.408 538.915 433.354C557.266 432.782 575.77 433.26 594.138 433.248Z"/>
+                        <path fill="#00F43D" d="M565.393 575.637C574.629 574.37 584 575.603 591.926 580.708C600.063 585.95 605.256 594.001 607.22 603.43C609.421 613.993 608.185 627.789 602.113 636.958C596.494 645.443 587.79 649.48 578.124 651.472C568.28 652.4 558.005 651.251 549.617 645.636C541.81 640.411 537.156 632.331 535.412 623.218C533.25 611.924 534.61 599.608 541.241 589.971C547.25 581.238 555.251 577.529 565.393 575.637ZM573.278 637.951C578.891 636.992 583.208 635.435 586.648 630.553C591.365 623.858 592.178 613.74 590.516 605.881C589.38 600.507 586.843 595.81 582.159 592.751C578.719 590.504 574.076 589.315 569.982 589.617C563.937 590.784 559.252 592.446 555.681 597.868C551.372 604.411 550.797 614.455 552.499 622C553.672 627.199 556.714 632.082 561.258 634.973C565.029 637.372 568.873 638.034 573.278 637.951Z"/>
+                        <path fill="#00F43D" d="M617.926 576.908L636.013 576.989C639.885 582.602 643.141 588.741 646.612 594.618L665.051 625.77C664.925 609.505 664.892 593.239 664.953 576.973L681.878 576.966C681.779 583.518 682.069 648.757 681.479 650.246C681.371 650.52 681.103 650.699 680.915 650.925L663.121 650.928C652.306 635.067 644.38 617.188 634.021 600.965C634.362 617.627 634.505 634.291 634.451 650.956C628.964 650.93 623.477 650.954 617.99 651.03C617.723 626.405 617.024 601.507 617.926 576.908Z"/>
+                        <path fill="#00F43D" d="M779.964 576.935C786.195 576.93 792.425 576.973 798.655 577.064C802.353 582.099 805.133 588.087 808.287 593.511L827.864 626.954L827.389 577.002L843.839 576.993C843.826 583.862 844.474 649.302 843.359 650.967L825.283 650.982C820.195 641.89 814.721 633.023 809.543 623.982C804.976 616.008 800.704 607.849 795.921 600.004C796.466 616.987 796.671 633.979 796.537 650.971C791.03 650.942 785.523 650.975 780.018 651.071C779.773 626.386 779.67 601.618 779.964 576.935Z"/>
+                        <path fill="#00F43D" fill-opacity="0.98823529" d="M856.733 576.96C873.166 577.127 889.617 576.961 906.053 576.955L906.043 591.048C895.597 591.95 884.529 591.242 874.018 591.391L874.125 605.931L904.818 605.96C904.634 610.65 904.703 615.376 904.659 620.071C894.977 620.512 885.098 620.113 875.399 620.118L874.664 620.191C872.859 622.904 874.024 632.83 874.079 636.376L905.994 636.444L905.986 650.919C889.656 651.129 873.326 650.845 856.999 651.073C856.562 626.386 856.962 601.656 856.733 576.96Z"/>
+                        <path fill="#00F43D" d="M693.992 576.982L711.14 576.992L711.244 635.77C721.434 636.085 731.67 635.879 741.866 635.868L741.802 650.95C725.832 651.063 709.821 650.734 693.86 651.154L693.992 576.982Z"/>
+                        <path fill="#00F43D" d="M750.315 576.954C756.2 576.966 762.085 576.936 767.97 576.864C767.533 601.524 767.931 626.261 767.895 650.93L750.276 650.979L750.315 576.954Z"/>
+                    </svg>
+                </div>
+                <p class="footer-text">© 2024 TV Online. Entretenimento premium ao seu alcance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // TMDb API Configuration
+        const API_KEY = 'dbec830eb29c74953dc07ccd2f8b5318';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+        // Carousel state
+        const carouselState = {
+            movies: { currentIndex: 0, items: [], autoPlayInterval: null },
+            series: { currentIndex: 0, items: [], autoPlayInterval: null }
+        };
+
+        // Fetch popular movies
+        async function fetchMovies() {
+            try {
+                const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
+                const data = await response.json();
+                return data.results.slice(0, 15); // Get first 15 movies
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+                return [];
+            }
+        }
+
+        // Fetch popular TV shows
+        async function fetchTVShows() {
+            try {
+                const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
+                const data = await response.json();
+                return data.results.slice(0, 15); // Get first 15 TV shows
+            } catch (error) {
+                console.error('Error fetching TV shows:', error);
+                return [];
+            }
+        }
+
+        // Create carousel item HTML
+        function createCarouselItem(item, type) {
+            const title = type === 'movie' ? item.title : item.name;
+            const year = type === 'movie' 
+                ? new Date(item.release_date).getFullYear() 
+                : new Date(item.first_air_date).getFullYear();
+            const rating = item.vote_average.toFixed(1);
+            const posterPath = item.poster_path ? `${IMAGE_BASE_URL}${item.poster_path}` : '/placeholder.svg?height=300&width=200&text=No+Image';
+
+            return `
+                <div class="carousel-item">
+                    <img src="${posterPath}" alt="${title}" loading="lazy">
+                    <div class="carousel-item-overlay">
+                        <div class="carousel-item-title">${title}</div>
+                        <div class="carousel-item-year">${year || 'N/A'}</div>
+                        <div class="carousel-item-rating">⭐ ${rating}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Create loading skeleton
+        function createLoadingSkeleton() {
+            return Array(8).fill().map(() => `
+                <div class="carousel-item">
+                    <div class="loading-skeleton" style="width: 100%; height: 300px; border-radius: 0.5rem;"></div>
+                </div>
+            `).join('');
+        }
+
+        // Render carousel
+        function renderCarousel(type, items) {
+            const track = document.getElementById(`${type}-track`);
+            const indicators = document.getElementById(`${type}-indicators`);
+            
+            if (!items.length) {
+                track.innerHTML = '<p style="color: white; text-align: center; width: 100%;">Erro ao carregar conteúdo</p>';
+                return;
+            }
+
+            // Render items
+            track.innerHTML = items.map(item => 
+                createCarouselItem(item, type === 'movies' ? 'movie' : 'tv')
+            ).join('');
+
+            // Create indicators
+            const totalPages = Math.ceil(items.length / getItemsPerPage());
+            indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
+                `<div class="carousel-indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
+            ).join('');
+
+            // Store items in state
+            carouselState[type].items = items;
+            carouselState[type].currentIndex = 0;
+
+            // Start auto-play
+            startAutoPlay(type);
+        }
+
+        // Get items per page based on screen size
+        function getItemsPerPage() {
+            if (window.innerWidth <= 768) return 2;
+            if (window.innerWidth <= 1024) return 4;
+            return 6;
+        }
+
+        // Navigate carousel
+        function navigateCarousel(type, direction) {
+            const state = carouselState[type];
+            const itemsPerPage = getItemsPerPage();
+            const totalPages = Math.ceil(state.items.length / itemsPerPage);
+            
+            state.currentIndex += direction;
+            
+            if (state.currentIndex >= totalPages) {
+                state.currentIndex = 0;
+            } else if (state.currentIndex < 0) {
+                state.currentIndex = totalPages - 1;
+            }
+            
+            updateCarouselPosition(type);
+            updateIndicators(type);
+            
+            // Restart auto-play
+            restartAutoPlay(type);
+        }
+
+        // Go to specific slide
+        function goToSlide(type, index) {
+            carouselState[type].currentIndex = index;
+            updateCarouselPosition(type);
+            updateIndicators(type);
+            restartAutoPlay(type);
+        }
+
+        // Update carousel position
+        function updateCarouselPosition(type) {
+            const track = document.getElementById(`${type}-track`);
+            const itemsPerPage = getItemsPerPage();
+            const itemWidth = window.innerWidth <= 768 ? 150 : 200;
+            const gap = 16; // 1rem gap
+            const offset = carouselState[type].currentIndex * (itemWidth + gap) * itemsPerPage;
+            
+            track.style.transform = `translateX(-${offset}px)`;
+        }
+
+        // Update indicators
+        function updateIndicators(type) {
+            const indicators = document.querySelectorAll(`#${type}-indicators .carousel-indicator`);
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === carouselState[type].currentIndex);
+            });
+        }
+
+        // Start auto-play
+        function startAutoPlay(type) {
+            const state = carouselState[type];
+            if (state.autoPlayInterval) {
+                clearInterval(state.autoPlayInterval);
+            }
+            
+            state.autoPlayInterval = setInterval(() => {
+                navigateCarousel(type, 1);
+            }, 4000); // Change slide every 4 seconds
+        }
+
+        // Restart auto-play
+        function restartAutoPlay(type) {
+            clearInterval(carouselState[type].autoPlayInterval);
+            startAutoPlay(type);
+        }
+
+        // Pause auto-play on hover
+        function setupHoverEvents() {
+            const carousels = document.querySelectorAll('.carousel-wrapper');
+            carousels.forEach((carousel, index) => {
+                const type = index === 0 ? 'movies' : 'series';
+                
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(carouselState[type].autoPlayInterval);
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    startAutoPlay(type);
+                });
+            });
+        }
+
+        // Handle window resize
+        function handleResize() {
+            Object.keys(carouselState).forEach(type => {
+                updateCarouselPosition(type);
+                
+                // Update indicators
+                const indicators = document.getElementById(`${type}-indicators`);
+                const totalPages = Math.ceil(carouselState[type].items.length / getItemsPerPage());
+                indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
+                    `<div class="carousel-indicator ${index === carouselState[type].currentIndex ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
+                ).join('');
+            });
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+                button.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+
+        // Initialize carousels
+        async function initCarousels() {
+            // Show loading skeletons
+            document.getElementById('movies-track').innerHTML = createLoadingSkeleton();
+            document.getElementById('series-track').innerHTML = createLoadingSkeleton();
+
+            try {
+                // Fetch data
+                const [movies, tvShows] = await Promise.all([
+                    fetchMovies(),
+                    fetchTVShows()
+                ]);
+
+                // Render carousels
+                renderCarousel('movies', movies);
+                renderCarousel('series', tvShows);
+
+                // Setup hover events
+                setupHoverEvents();
+
+                // Re-initialize Lucide icons for new content
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Error initializing carousels:', error);
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('load', initCarousels);
+
+        // Initialize on DOM content loaded as fallback
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCarousels);
+        } else {
+            initCarousels();
+        }
+    </script>
+</body>
+</html>
