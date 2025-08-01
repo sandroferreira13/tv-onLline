@@ -160,6 +160,76 @@
             color: #d1d5db;
         }
 
+        /* Family Appeal Section */
+        .family-appeal {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .family-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .family-text {
+            text-align: left;
+        }
+
+        .family-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .family-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .family-features {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .family-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .family-feature-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #22c55e;
+        }
+
+        .family-feature-text {
+            color: #d1d5db;
+            font-size: 1rem;
+        }
+
+        .family-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .family-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Carousels Section */
         .carousels-section {
             padding: 4rem 0;
@@ -247,6 +317,49 @@
             font-size: 0.75rem;
             color: #fbbf24;
             margin-top: 0.25rem;
+        }
+
+        /* Channel Logo Specific Styles */
+        .channel-item {
+            flex: 0 0 150px;
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+        }
+
+        .channel-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .channel-item img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 0.25rem;
+        }
+
+        .channel-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 0.5rem;
+            color: white;
+        }
+
+        .channel-item-title {
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
         }
 
         .carousel-nav {
@@ -562,13 +675,13 @@
             color: #9ca3af;
         }
 
-        /* Instagram Section */
-        .instagram-section {
+        /* Games Section */
+        .games-section {
             padding: 4rem 0;
             background: rgba(0, 0, 0, 0.2);
         }
 
-        .instagram-content {
+        .games-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
@@ -577,11 +690,11 @@
             margin: 0 auto;
         }
 
-        .instagram-text {
+        .games-text {
             text-align: left;
         }
 
-        .instagram-title {
+        .games-title {
             font-size: 2rem;
             font-weight: bold;
             margin-bottom: 1rem;
@@ -591,19 +704,19 @@
             gap: 0.75rem;
         }
 
-        .instagram-icon {
+        .games-icon {
             width: 2.5rem;
             height: 2.5rem;
-            color: #e1306c;
+            color: #22c55e;
         }
 
-        .instagram-subtitle {
+        .games-subtitle {
             font-size: 1.125rem;
             color: #d1d5db;
             margin-bottom: 2rem;
         }
 
-        .instagram-button {
+        .games-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -618,92 +731,27 @@
             transition: all 0.3s ease;
         }
 
-        .instagram-button:hover {
+        .games-button:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(225, 48, 108, 0.3);
         }
 
-        .instagram-button-icon {
+        .games-button-icon {
             width: 1.5rem;
             height: 1.5rem;
         }
 
-        .instagram-image {
+        .games-image {
             position: relative;
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .instagram-image img {
+        .games-image img {
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        /* Games Section */
-        .games-section {
-            padding: 4rem 0;
-        }
-
-        .games-title {
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-        }
-
-        .games-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            color: #22c55e;
-        }
-
-        .games-subtitle {
-            font-size: 1.125rem;
-            color: #d1d5db;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .games-video-container {
-            max-width: 48rem;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .games-video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .games-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 2rem;
-            color: white;
-        }
-
-        .games-overlay h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .games-overlay p {
-            color: #d1d5db;
         }
 
         /* Testimonials Section */
@@ -1004,6 +1052,11 @@
             .carousel-item img {
                 height: 225px;
             }
+
+            .channel-item {
+                flex: 0 0 120px;
+                height: 100px;
+            }
             
             .carousel-nav {
                 width: 2.5rem;
@@ -1023,12 +1076,12 @@
                 height: 4rem;
             }
 
-            .instagram-content {
+            .games-content, .family-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .instagram-text {
+            .games-text, .family-text {
                 text-align: center;
             }
 
@@ -1056,6 +1109,10 @@
 
             .testimonials-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .family-title {
+                font-size: 2rem;
             }
         }
 
@@ -1091,6 +1148,10 @@
 
             .hero-subtitle {
                 font-size: 1.125rem;
+            }
+
+            .family-title {
+                font-size: 1.75rem;
             }
         }
 
@@ -1175,6 +1236,43 @@
         </div>
     </section>
 
+    <!-- Family Appeal Section -->
+    <section class="family-appeal">
+        <div class="container">
+            <div class="family-content">
+                <div class="family-text">
+                    <h2 class="family-title">
+                        Entretenimento para toda a família
+                    </h2>
+                    <p class="family-subtitle">
+                        Transforme sua casa no melhor cinema e teatro do mundo. Com nossa plataforma, você tem acesso ilimitado ao melhor entretenimento, reunindo toda a família em momentos únicos e especiais.
+                    </p>
+                    <div class="family-features">
+                        <div class="family-feature">
+                            <i data-lucide="users" class="family-feature-icon"></i>
+                            <span class="family-feature-text">Conteúdo para todas as idades</span>
+                        </div>
+                        <div class="family-feature">
+                            <i data-lucide="heart" class="family-feature-icon"></i>
+                            <span class="family-feature-text">Momentos especiais em família</span>
+                        </div>
+                        <div class="family-feature">
+                            <i data-lucide="home" class="family-feature-icon"></i>
+                            <span class="family-feature-text">Conforto do seu lar</span>
+                        </div>
+                        <div class="family-feature">
+                            <i data-lucide="clock" class="family-feature-icon"></i>
+                            <span class="family-feature-text">Disponível 24 horas por dia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="family-image">
+                    <img src="/placeholder.svg?height=400&width=600&text=Família+assistindo+TV+juntos+no+sofá" alt="Família assistindo TV juntos" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Subscribe Button 2 -->
     <section class="subscribe-section">
         <div class="container">
@@ -1188,6 +1286,46 @@
     <!-- Carousels Section -->
     <section class="carousels-section">
         <div class="container-lg">
+            <!-- Live TV Channels Carousel -->
+            <div class="carousel-container">
+                <h2 class="carousel-title">
+                    <i data-lucide="radio" class="carousel-title-icon"></i>
+                    Canais ao Vivo - Abertos e Fechados
+                </h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="channels-track">
+                        <!-- Channels will be loaded here -->
+                    </div>
+                    <button class="carousel-nav carousel-nav-prev" onclick="navigateCarousel('channels', -1)">
+                        <i data-lucide="chevron-left" class="carousel-nav-icon"></i>
+                    </button>
+                    <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('channels', 1)">
+                        <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="channels-indicators"></div>
+            </div>
+
+            <!-- Kids Content Carousel -->
+            <div class="carousel-container">
+                <h2 class="carousel-title">
+                    <i data-lucide="baby" class="carousel-title-icon"></i>
+                    Conteúdo Infantil
+                </h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="kids-track">
+                        <!-- Kids content will be loaded here -->
+                    </div>
+                    <button class="carousel-nav carousel-nav-prev" onclick="navigateCarousel('kids', -1)">
+                        <i data-lucide="chevron-left" class="carousel-nav-icon"></i>
+                    </button>
+                    <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('kids', 1)">
+                        <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="kids-indicators"></div>
+            </div>
+
             <!-- Movies Carousel -->
             <div class="carousel-container">
                 <h2 class="carousel-title">
@@ -1490,24 +1628,27 @@
         </div>
     </section>
 
-    <!-- Instagram Section -->
-    <section class="instagram-section">
+    <!-- Games Section -->
+    <section class="games-section">
         <div class="container">
-            <div class="instagram-content">
-                <div class="instagram-text">
-                    <h2 class="instagram-title">
-                        <i data-lucide="instagram" class="instagram-icon"></i>
-                        Siga-nos no Instagram
+            <div class="games-content">
+                <div class="games-text">
+                    <h2 class="games-title">
+                        <i data-lucide="gamepad-2" class="games-icon"></i>
+                        Jogos do Dia
                     </h2>
-                    <p class="instagram-subtitle">
-                        Fique por dentro das novidades, promoções exclusivas e conteúdos em primeira mão!
+                    <p class="games-subtitle">
+                        Acompanhe os principais jogos e eventos esportivos
                     </p>
-                    <a href="https://instagram.com/tvonline" class="instagram-button" target="_blank">
-                        <i data-lucide="instagram" class="instagram-button-icon"></i>
-                        Seguir @tvonline
+                    <p class="games-subtitle">
+                        Não perca nenhum lance dos principais jogos e campeonatos! Siga nosso Instagram para ficar por dentro de todos os jogos do dia, horários das partidas e onde assistir.
+                    </p>
+                    <a href="https://instagram.com/tvonline" class="games-button" target="_blank">
+                        <i data-lucide="instagram" class="games-button-icon"></i>
+                        Seguir no Instagram
                     </a>
                 </div>
-                <div class="instagram-image">
+                <div class="games-image">
                     <img src="https://i.im.ge/2025/08/01/Jt5r7T.WhatsApp-Image-2025-07-31-at-16-17-18.jpeg" alt="Interface do IPTV TV Online em Smart TV" loading="lazy">
                 </div>
             </div>
@@ -1515,39 +1656,6 @@
     </section>
 
     <!-- Subscribe Button 7 -->
-    <section class="subscribe-section">
-        <div class="container">
-            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
-                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
-                Assina Já
-            </a>
-        </div>
-    </section>
-
-    <!-- Games Section -->
-    <section class="games-section">
-        <div class="container">
-            <h2 class="games-title">
-                <i data-lucide="gamepad-2" class="games-icon"></i>
-                Jogos do Dia
-            </h2>
-            <p class="games-subtitle">
-                Acompanhe os principais jogos e eventos esportivos ao vivo em alta qualidade
-            </p>
-            <div class="games-video-container">
-                <video class="games-video" controls poster="/placeholder.svg?height=400&width=800&text=Jogos+do+Dia">
-                    <source src="/placeholder-video.mp4" type="video/mp4">
-                    Seu navegador não suporta o elemento de vídeo.
-                </video>
-                <div class="games-overlay">
-                    <h3>Transmissões Esportivas ao Vivo</h3>
-                    <p>Assista aos principais campeonatos e jogos em tempo real com qualidade 4K</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Subscribe Button 8 -->
     <section class="subscribe-section">
         <div class="container">
             <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
@@ -1619,7 +1727,7 @@
         </div>
     </section>
 
-    <!-- Subscribe Button 9 -->
+    <!-- Subscribe Button 8 -->
     <section class="subscribe-section">
         <div class="container">
             <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
@@ -1733,7 +1841,7 @@
         </div>
     </section>
 
-    <!-- Subscribe Button 10 -->
+    <!-- Subscribe Button 9 -->
     <section class="subscribe-section">
         <div class="container">
             <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
@@ -1796,16 +1904,37 @@
 
         // Carousel state
         const carouselState = {
+            channels: { currentIndex: 0, items: [], autoPlayInterval: null },
+            kids: { currentIndex: 0, items: [], autoPlayInterval: null },
             movies: { currentIndex: 0, items: [], autoPlayInterval: null },
             series: { currentIndex: 0, items: [], autoPlayInterval: null }
         };
+
+        // Mock data for TV channels
+        const tvChannels = [
+            { name: 'Globo', logo: '/placeholder.svg?height=80&width=120&text=Globo', type: 'Aberto' },
+            { name: 'SBT', logo: '/placeholder.svg?height=80&width=120&text=SBT', type: 'Aberto' },
+            { name: 'Record', logo: '/placeholder.svg?height=80&width=120&text=Record', type: 'Aberto' },
+            { name: 'Band', logo: '/placeholder.svg?height=80&width=120&text=Band', type: 'Aberto' },
+            { name: 'RedeTV!', logo: '/placeholder.svg?height=80&width=120&text=RedeTV', type: 'Aberto' },
+            { name: 'Sportv', logo: '/placeholder.svg?height=80&width=120&text=Sportv', type: 'Fechado' },
+            { name: 'ESPN', logo: '/placeholder.svg?height=80&width=120&text=ESPN', type: 'Fechado' },
+            { name: 'Fox Sports', logo: '/placeholder.svg?height=80&width=120&text=Fox+Sports', type: 'Fechado' },
+            { name: 'Premiere', logo: '/placeholder.svg?height=80&width=120&text=Premiere', type: 'Fechado' },
+            { name: 'Globosat', logo: '/placeholder.svg?height=80&width=120&text=Globosat', type: 'Fechado' },
+            { name: 'Discovery', logo: '/placeholder.svg?height=80&width=120&text=Discovery', type: 'Fechado' },
+            { name: 'History', logo: '/placeholder.svg?height=80&width=120&text=History', type: 'Fechado' },
+            { name: 'National Geographic', logo: '/placeholder.svg?height=80&width=120&text=Nat+Geo', type: 'Fechado' },
+            { name: 'HBO', logo: '/placeholder.svg?height=80&width=120&text=HBO', type: 'Fechado' },
+            { name: 'Netflix', logo: '/placeholder.svg?height=80&width=120&text=Netflix', type: 'Fechado' }
+        ];
 
         // Fetch popular movies
         async function fetchMovies() {
             try {
                 const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
                 const data = await response.json();
-                return data.results.slice(0, 15); // Get first 15 movies
+                return data.results.slice(0, 15);
             } catch (error) {
                 console.error('Error fetching movies:', error);
                 return [];
@@ -1817,15 +1946,38 @@
             try {
                 const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
                 const data = await response.json();
-                return data.results.slice(0, 15); // Get first 15 TV shows
+                return data.results.slice(0, 15);
             } catch (error) {
                 console.error('Error fetching TV shows:', error);
                 return [];
             }
         }
 
+        // Fetch kids content
+        async function fetchKidsContent() {
+            try {
+                const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&language=pt-BR&with_genres=16&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=1`);
+                const data = await response.json();
+                return data.results.slice(0, 15);
+            } catch (error) {
+                console.error('Error fetching kids content:', error);
+                return [];
+            }
+        }
+
         // Create carousel item HTML
         function createCarouselItem(item, type) {
+            if (type === 'channel') {
+                return `
+                    <div class="channel-item">
+                        <img src="${item.logo}" alt="${item.name}" loading="lazy">
+                        <div class="channel-item-overlay">
+                            <div class="channel-item-title">${item.name}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
             const title = type === 'movie' ? item.title : item.name;
             const year = type === 'movie' 
                 ? new Date(item.release_date).getFullYear() 
@@ -1846,10 +1998,13 @@
         }
 
         // Create loading skeleton
-        function createLoadingSkeleton() {
+        function createLoadingSkeleton(type = 'default') {
+            const skeletonClass = type === 'channel' ? 'channel-item' : 'carousel-item';
+            const skeletonHeight = type === 'channel' ? '120px' : '300px';
+            
             return Array(8).fill().map(() => `
-                <div class="carousel-item">
-                    <div class="loading-skeleton" style="width: 100%; height: 300px; border-radius: 0.5rem;"></div>
+                <div class="${skeletonClass}">
+                    <div class="loading-skeleton" style="width: 100%; height: ${skeletonHeight}; border-radius: 0.5rem;"></div>
                 </div>
             `).join('');
         }
@@ -1865,12 +2020,17 @@
             }
 
             // Render items
-            track.innerHTML = items.map(item => 
-                createCarouselItem(item, type === 'movies' ? 'movie' : 'tv')
-            ).join('');
+            if (type === 'channels') {
+                track.innerHTML = items.map(item => createCarouselItem(item, 'channel')).join('');
+            } else {
+                track.innerHTML = items.map(item => 
+                    createCarouselItem(item, type === 'movies' ? 'movie' : 'tv')
+                ).join('');
+            }
 
             // Create indicators
-            const totalPages = Math.ceil(items.length / getItemsPerPage());
+            const itemsPerPage = getItemsPerPage(type);
+            const totalPages = Math.ceil(items.length / itemsPerPage);
             indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
                 `<div class="carousel-indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
             ).join('');
@@ -1883,8 +2043,14 @@
             startAutoPlay(type);
         }
 
-        // Get items per page based on screen size
-        function getItemsPerPage() {
+        // Get items per page based on screen size and carousel type
+        function getItemsPerPage(type = 'default') {
+            if (type === 'channels') {
+                if (window.innerWidth <= 768) return 3;
+                if (window.innerWidth <= 1024) return 5;
+                return 8;
+            }
+            
             if (window.innerWidth <= 768) return 2;
             if (window.innerWidth <= 1024) return 4;
             return 6;
@@ -1893,7 +2059,7 @@
         // Navigate carousel
         function navigateCarousel(type, direction) {
             const state = carouselState[type];
-            const itemsPerPage = getItemsPerPage();
+            const itemsPerPage = getItemsPerPage(type);
             const totalPages = Math.ceil(state.items.length / itemsPerPage);
             
             state.currentIndex += direction;
@@ -1922,11 +2088,18 @@
         // Update carousel position
         function updateCarouselPosition(type) {
             const track = document.getElementById(`${type}-track`);
-            const itemsPerPage = getItemsPerPage();
-            const itemWidth = window.innerWidth <= 768 ? 150 : 200;
-            const gap = 16; // 1rem gap
-            const offset = carouselState[type].currentIndex * (itemWidth + gap) * itemsPerPage;
+            const itemsPerPage = getItemsPerPage(type);
             
+            let itemWidth, gap;
+            if (type === 'channels') {
+                itemWidth = window.innerWidth <= 768 ? 120 : 150;
+                gap = 16;
+            } else {
+                itemWidth = window.innerWidth <= 768 ? 150 : 200;
+                gap = 16;
+            }
+            
+            const offset = carouselState[type].currentIndex * (itemWidth + gap) * itemsPerPage;
             track.style.transform = `translateX(-${offset}px)`;
         }
 
@@ -1947,7 +2120,7 @@
             
             state.autoPlayInterval = setInterval(() => {
                 navigateCarousel(type, 1);
-            }, 4000); // Change slide every 4 seconds
+            }, 4000);
         }
 
         // Restart auto-play
@@ -1960,7 +2133,8 @@
         function setupHoverEvents() {
             const carousels = document.querySelectorAll('.carousel-wrapper');
             carousels.forEach((carousel, index) => {
-                const type = index === 0 ? 'movies' : 'series';
+                const types = ['channels', 'kids', 'movies', 'series'];
+                const type = types[index];
                 
                 carousel.addEventListener('mouseenter', () => {
                     clearInterval(carouselState[type].autoPlayInterval);
@@ -1979,7 +2153,7 @@
                 
                 // Update indicators
                 const indicators = document.getElementById(`${type}-indicators`);
-                const totalPages = Math.ceil(carouselState[type].items.length / getItemsPerPage());
+                const totalPages = Math.ceil(carouselState[type].items.length / getItemsPerPage(type));
                 indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
                     `<div class="carousel-indicator ${index === carouselState[type].currentIndex ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
                 ).join('');
@@ -2007,17 +2181,22 @@
         // Initialize carousels
         async function initCarousels() {
             // Show loading skeletons
+            document.getElementById('channels-track').innerHTML = createLoadingSkeleton('channel');
+            document.getElementById('kids-track').innerHTML = createLoadingSkeleton();
             document.getElementById('movies-track').innerHTML = createLoadingSkeleton();
             document.getElementById('series-track').innerHTML = createLoadingSkeleton();
 
             try {
                 // Fetch data
-                const [movies, tvShows] = await Promise.all([
+                const [kidsContent, movies, tvShows] = await Promise.all([
+                    fetchKidsContent(),
                     fetchMovies(),
                     fetchTVShows()
                 ]);
 
                 // Render carousels
+                renderCarousel('channels', tvChannels);
+                renderCarousel('kids', kidsContent);
                 renderCarousel('movies', movies);
                 renderCarousel('series', tvShows);
 
