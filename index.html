@@ -188,22 +188,38 @@
 
         .family-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
             max-width: 96rem;
             margin: 0 auto;
+            text-align: center;
+        }
+
+        .family-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .family-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .family-text {
-            text-align: left;
+            text-align: center;
         }
 
         .family-title {
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            color: white;
+            color: #22c55e;
             line-height: 1.2;
         }
 
@@ -212,17 +228,24 @@
             color: #d1d5db;
             margin-bottom: 2rem;
             line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .family-features {
             display: grid;
             gap: 1rem;
             margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .family-feature {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
         }
 
@@ -235,19 +258,6 @@
         .family-feature-text {
             color: #d1d5db;
             font-size: 1rem;
-        }
-
-        .family-image {
-            position: relative;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .family-image img {
-            width: 100%;
-            height: auto;
-            display: block;
         }
 
         /* Carousels Section */
@@ -288,7 +298,7 @@
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
             gap: 1rem;
         }
 
@@ -705,7 +715,7 @@
         }
 
         .games-text {
-            text-align: left;
+            text-align: center;
         }
 
         .games-title {
@@ -715,6 +725,7 @@
             color: #22c55e;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
         }
 
@@ -1070,11 +1081,11 @@
 
         @media (max-width: 768px) {
             .carousel-item {
-                flex: 0 0 150px;
+                flex: 0 0 140px;
             }
             
             .carousel-item img {
-                height: 225px;
+                height: 210px;
             }
 
             .channels-grid {
@@ -1099,12 +1110,12 @@
                 height: 4rem;
             }
 
-            .games-content, .family-content {
+            .games-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .games-text, .family-text {
+            .games-text {
                 text-align: center;
             }
 
@@ -1136,6 +1147,10 @@
 
             .family-title {
                 font-size: 2rem;
+            }
+
+            .carousel-track {
+                transition: transform 1s ease;
             }
         }
 
@@ -1175,6 +1190,18 @@
 
             .family-title {
                 font-size: 1.75rem;
+            }
+
+            .carousel-item {
+                flex: 0 0 120px;
+            }
+            
+            .carousel-item img {
+                height: 180px;
+            }
+
+            .carousel-track {
+                transition: transform 1.2s ease;
             }
         }
     </style>
@@ -1253,6 +1280,9 @@
     <section class="family-appeal">
         <div class="container">
             <div class="family-content">
+                <div class="family-image">
+                    <img src="https://i.im.ge/2025/08/01/Jtxdqa.WhatsApp-Image-2025-08-01-at-15-09-28.jpeg" alt="Família assistindo TV juntos" loading="lazy">
+                </div>
                 <div class="family-text">
                     <h2 class="family-title">
                         Entretenimento para toda a família
@@ -1278,9 +1308,6 @@
                             <span class="family-feature-text">Disponível 24 horas por dia</span>
                         </div>
                     </div>
-                </div>
-                <div class="family-image">
-                    <img src="https://i.im.ge/2025/08/01/Jtxdqa.WhatsApp-Image-2025-08-01-at-15-09-28.jpeg" alt="Família assistindo TV juntos" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1908,26 +1935,19 @@
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // TV Channels data
+        // TV Channels data - Only 8 channels for example
         const tvChannels = [
             { name: 'Globo', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Rede_Globo_logo.svg/200px-Rede_Globo_logo.svg.png' },
             { name: 'SBT', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/SBT_logo_2014.svg/200px-SBT_logo_2014.svg.png' },
             { name: 'Record', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/RecordTV_logo.svg/200px-RecordTV_logo.svg.png' },
             { name: 'Band', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Band_logo_2021.svg/200px-Band_logo_2021.svg.png' },
-            { name: 'RedeTV!', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/RedeTV%21_logo.svg/200px-RedeTV%21_logo.svg.png' },
             { name: 'Sportv', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/SporTV_logo.svg/200px-SporTV_logo.svg.png' },
             { name: 'ESPN', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/200px-ESPN_wordmark.svg.png' },
-            { name: 'Fox Sports', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fox_Sports_logo.svg/200px-Fox_Sports_logo.svg.png' },
-            { name: 'Premiere', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Premiere_logo.svg/200px-Premiere_logo.svg.png' },
-            { name: 'Globosat', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Rede_Globo_logo.svg/200px-Rede_Globo_logo.svg.png' },
-            { name: 'Discovery', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Discovery_Channel_logo.svg/200px-Discovery_Channel_logo.svg.png' },
-            { name: 'History', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/History_%282021%29.svg/200px-History_%282021%29.svg.png' },
-            { name: 'National Geographic', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/200px-Natgeologo.svg.png' },
             { name: 'HBO', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/200px-HBO_logo.svg.png' },
             { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/200px-Netflix_2015_logo.svg.png' }
         ];
 
-        // Carousel state with autoplay
+        // Carousel state with autoplay - slower transitions
         const carouselState = {
             kids: { 
                 currentIndex: 0, 
@@ -2024,37 +2044,34 @@
             `;
         }
 
-        // Create channels grid
+        // Create channels grid - Only 8 channels
         function createChannelsGrid() {
             let html = '';
-            for (let i = 0; i < tvChannels.length; i += 8) {
-                const row1 = tvChannels.slice(i, i + 4);
-                const row2 = tvChannels.slice(i + 4, i + 8);
-                
-                html += '<div class="channels-grid">';
-                row1.forEach(channel => {
-                    html += `
-                        <div class="channel-item">
-                            <img src="${channel.logo}" alt="${channel.name}" 
-                                 onerror="this.src='/placeholder.svg?height=60&width=100&text=${encodeURIComponent(channel.name)}'">
-                        </div>
-                    `;
-                });
-                html += '</div>';
-                
-                if (row2.length > 0) {
-                    html += '<div class="channels-grid">';
-                    row2.forEach(channel => {
-                        html += `
-                            <div class="channel-item">
-                                <img src="${channel.logo}" alt="${channel.name}"
-                                     onerror="this.src='/placeholder.svg?height=60&width=100&text=${encodeURIComponent(channel.name)}'">
-                            </div>
-                        `;
-                    });
-                    html += '</div>';
-                }
-            }
+            
+            // First row - 4 channels
+            html += '<div class="channels-grid">';
+            tvChannels.slice(0, 4).forEach(channel => {
+                html += `
+                    <div class="channel-item">
+                        <img src="${channel.logo}" alt="${channel.name}" 
+                             onerror="this.src='/placeholder.svg?height=60&width=100&text=${encodeURIComponent(channel.name)}'">
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            // Second row - 4 channels
+            html += '<div class="channels-grid">';
+            tvChannels.slice(4, 8).forEach(channel => {
+                html += `
+                    <div class="channel-item">
+                        <img src="${channel.logo}" alt="${channel.name}"
+                             onerror="this.src='/placeholder.svg?height=60&width=100&text=${encodeURIComponent(channel.name)}'">
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
             return html;
         }
 
@@ -2071,11 +2088,11 @@
             carouselState[type].items = items;
             carouselState[type].currentIndex = 0;
             
-            // Start autoplay
+            // Start autoplay - slower interval
             startAutoplay(type);
         }
 
-        // Start autoplay
+        // Start autoplay - slower for mobile accessibility
         function startAutoplay(type) {
             if (carouselState[type].autoplayInterval) {
                 clearInterval(carouselState[type].autoplayInterval);
@@ -2085,7 +2102,7 @@
                 if (!carouselState[type].isPaused && !carouselState[type].manualPause) {
                     navigateCarousel(type, 1, false);
                 }
-            }, 4000); // Change slide every 4 seconds
+            }, 6000); // Slower - 6 seconds instead of 4
             
             updateAutoplayIndicator(type);
         }
@@ -2136,7 +2153,7 @@
         // Navigate carousel
         function navigateCarousel(type, direction, isManual = true) {
             const state = carouselState[type];
-            const itemsPerPage = 6;
+            const itemsPerPage = window.innerWidth <= 480 ? 3 : (window.innerWidth <= 768 ? 4 : 6);
             const totalPages = Math.ceil(state.items.length / itemsPerPage);
             
             state.currentIndex += direction;
@@ -2154,19 +2171,19 @@
                 state.manualPause = true;
                 updateAutoplayIndicator(type);
                 
-                // Resume autoplay after 8 seconds
+                // Resume autoplay after 10 seconds (longer for accessibility)
                 setTimeout(() => {
                     state.manualPause = false;
                     updateAutoplayIndicator(type);
-                }, 8000);
+                }, 10000);
             }
         }
 
-        // Update carousel position
+        // Update carousel position - responsive
         function updateCarouselPosition(type) {
             const track = document.getElementById(`${type}-track`);
-            const itemWidth = 216; // 200px + 16px gap
-            const itemsPerPage = 6;
+            const itemWidth = window.innerWidth <= 480 ? 136 : (window.innerWidth <= 768 ? 156 : 216);
+            const itemsPerPage = window.innerWidth <= 480 ? 3 : (window.innerWidth <= 768 ? 4 : 6);
             const offset = carouselState[type].currentIndex * itemWidth * itemsPerPage;
             track.style.transform = `translateX(-${offset}px)`;
         }
@@ -2196,7 +2213,7 @@
             document.getElementById('movies-track').innerHTML = createLoadingSkeleton();
             document.getElementById('series-track').innerHTML = createLoadingSkeleton();
 
-            // Load channels grid
+            // Load channels grid - only 8 channels
             document.getElementById('channels-content').innerHTML = createChannelsGrid();
 
             try {
@@ -2219,6 +2236,13 @@
             }
         }
 
+        // Handle window resize for responsive carousel
+        window.addEventListener('resize', () => {
+            Object.keys(carouselState).forEach(type => {
+                updateCarouselPosition(type);
+            });
+        });
+
         // Clean up intervals on page unload
         window.addEventListener('beforeunload', () => {
             Object.keys(carouselState).forEach(type => {
@@ -2238,23 +2262,3 @@
     </script>
 </body>
 </html>
-
-Agora os carrosséis têm **rotação automática** com as seguintes funcionalidades:
-
-## ✨ **Funcionalidades de Auto-play Adicionadas:**
-
-1. **🔄 Rotação Automática**: Carrosséis avançam automaticamente a cada 4 segundos
-2. **⏸️ Pausa no Hover**: Para quando o mouse está sobre o carrossel
-3. **🎮 Controle Manual**: Botões de navegação pausam temporariamente o auto-play
-4. **📊 Indicador Visual**: Mostra status do auto-play (play/pause)
-5. **⏰ Retomada Inteligente**: Auto-play retorna após 8 segundos de inatividade manual
-6. **🔄 Loop Infinito**: Volta ao início quando chega ao final
-7. **🧹 Limpeza Automática**: Remove intervalos ao sair da página
-
-### **Como Funciona:**
-- ▶️ **Auto-play ativo**: Ícone de play verde
-- ⏸️ **Pausado**: Ícone de pause amarelo
-- 🖱️ **Hover**: Pausa temporariamente
-- 👆 **Clique manual**: Pausa por 8 segundos, depois retoma
-
-O arquivo está completo e pronto para uso com carrosséis totalmente automáticos! 🚀
