@@ -418,6 +418,31 @@
             100% { background-position: -200% 0; }
         }
 
+        /* Auto-play indicator */
+        .carousel-autoplay-indicator {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #22c55e;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .carousel-autoplay-indicator.paused {
+            color: #fbbf24;
+        }
+
+        .autoplay-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
         /* Features Section */
         .features {
             padding: 4rem 0;
@@ -1293,7 +1318,7 @@
                     <i data-lucide="baby" class="carousel-title-icon"></i>
                     Conteúdo Infantil
                 </h2>
-                <div class="carousel-wrapper">
+                <div class="carousel-wrapper" onmouseenter="pauseAutoplay('kids')" onmouseleave="resumeAutoplay('kids')">
                     <div class="carousel-track" id="kids-track">
                         <!-- Kids content will be loaded here -->
                     </div>
@@ -1303,6 +1328,10 @@
                     <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('kids', 1)">
                         <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
                     </button>
+                    <div class="carousel-autoplay-indicator" id="kids-indicator">
+                        <i data-lucide="play" class="autoplay-icon"></i>
+                        <span>Auto</span>
+                    </div>
                 </div>
             </div>
 
@@ -1312,7 +1341,7 @@
                     <i data-lucide="film" class="carousel-title-icon"></i>
                     Filmes Populares
                 </h2>
-                <div class="carousel-wrapper">
+                <div class="carousel-wrapper" onmouseenter="pauseAutoplay('movies')" onmouseleave="resumeAutoplay('movies')">
                     <div class="carousel-track" id="movies-track">
                         <!-- Movies will be loaded here -->
                     </div>
@@ -1322,6 +1351,10 @@
                     <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('movies', 1)">
                         <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
                     </button>
+                    <div class="carousel-autoplay-indicator" id="movies-indicator">
+                        <i data-lucide="play" class="autoplay-icon"></i>
+                        <span>Auto</span>
+                    </div>
                 </div>
             </div>
 
@@ -1331,7 +1364,7 @@
                     <i data-lucide="tv" class="carousel-title-icon"></i>
                     Séries Populares
                 </h2>
-                <div class="carousel-wrapper">
+                <div class="carousel-wrapper" onmouseenter="pauseAutoplay('series')" onmouseleave="resumeAutoplay('series')">
                     <div class="carousel-track" id="series-track">
                         <!-- TV Shows will be loaded here -->
                     </div>
@@ -1341,6 +1374,10 @@
                     <button class="carousel-nav carousel-nav-next" onclick="navigateCarousel('series', 1)">
                         <i data-lucide="chevron-right" class="carousel-nav-icon"></i>
                     </button>
+                    <div class="carousel-autoplay-indicator" id="series-indicator">
+                        <i data-lucide="play" class="autoplay-icon"></i>
+                        <span>Auto</span>
+                    </div>
                 </div>
             </div>
 
@@ -1890,11 +1927,29 @@
             { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/200px-Netflix_2015_logo.svg.png' }
         ];
 
-        // Carousel state
+        // Carousel state with autoplay
         const carouselState = {
-            kids: { currentIndex: 0, items: [] },
-            movies: { currentIndex: 0, items: [] },
-            series: { currentIndex: 0, items: [] }
+            kids: { 
+                currentIndex: 0, 
+                items: [], 
+                autoplayInterval: null, 
+                isPaused: false,
+                manualPause: false
+            },
+            movies: { 
+                currentIndex: 0, 
+                items: [], 
+                autoplayInterval: null, 
+                isPaused: false,
+                manualPause: false
+            },
+            series: { 
+                currentIndex: 0, 
+                items: [], 
+                autoplayInterval: null, 
+                isPaused: false,
+                manualPause: false
+            }
         };
 
         // API Functions
@@ -2015,10 +2070,71 @@
             track.innerHTML = items.map(item => createCarouselItem(item)).join('');
             carouselState[type].items = items;
             carouselState[type].currentIndex = 0;
+            
+            // Start autoplay
+            startAutoplay(type);
+        }
+
+        // Start autoplay
+        function startAutoplay(type) {
+            if (carouselState[type].autoplayInterval) {
+                clearInterval(carouselState[type].autoplayInterval);
+            }
+            
+            carouselState[type].autoplayInterval = setInterval(() => {
+                if (!carouselState[type].isPaused && !carouselState[type].manualPause) {
+                    navigateCarousel(type, 1, false);
+                }
+            }, 4000); // Change slide every 4 seconds
+            
+            updateAutoplayIndicator(type);
+        }
+
+        // Stop autoplay
+        function stopAutoplay(type) {
+            if (carouselState[type].autoplayInterval) {
+                clearInterval(carouselState[type].autoplayInterval);
+                carouselState[type].autoplayInterval = null;
+            }
+            updateAutoplayIndicator(type);
+        }
+
+        // Pause autoplay on hover
+        function pauseAutoplay(type) {
+            carouselState[type].isPaused = true;
+            updateAutoplayIndicator(type);
+        }
+
+        // Resume autoplay when not hovering
+        function resumeAutoplay(type) {
+            carouselState[type].isPaused = false;
+            updateAutoplayIndicator(type);
+        }
+
+        // Update autoplay indicator
+        function updateAutoplayIndicator(type) {
+            const indicator = document.getElementById(`${type}-indicator`);
+            if (!indicator) return;
+            
+            const icon = indicator.querySelector('.autoplay-icon');
+            const isActive = carouselState[type].autoplayInterval && 
+                           !carouselState[type].isPaused && 
+                           !carouselState[type].manualPause;
+            
+            if (isActive) {
+                indicator.classList.remove('paused');
+                icon.setAttribute('data-lucide', 'play');
+            } else {
+                indicator.classList.add('paused');
+                icon.setAttribute('data-lucide', 'pause');
+            }
+            
+            // Re-initialize icons
+            lucide.createIcons();
         }
 
         // Navigate carousel
-        function navigateCarousel(type, direction) {
+        function navigateCarousel(type, direction, isManual = true) {
             const state = carouselState[type];
             const itemsPerPage = 6;
             const totalPages = Math.ceil(state.items.length / itemsPerPage);
@@ -2032,6 +2148,18 @@
             }
             
             updateCarouselPosition(type);
+            
+            // If manual navigation, pause autoplay temporarily
+            if (isManual) {
+                state.manualPause = true;
+                updateAutoplayIndicator(type);
+                
+                // Resume autoplay after 8 seconds
+                setTimeout(() => {
+                    state.manualPause = false;
+                    updateAutoplayIndicator(type);
+                }, 8000);
+            }
         }
 
         // Update carousel position
@@ -2079,7 +2207,7 @@
                     fetchTVShows()
                 ]);
 
-                // Render carousels
+                // Render carousels with autoplay
                 renderCarousel('kids', kidsContent);
                 renderCarousel('movies', movies);
                 renderCarousel('series', tvShows);
@@ -2090,6 +2218,13 @@
                 console.error('Error initializing carousels:', error);
             }
         }
+
+        // Clean up intervals on page unload
+        window.addEventListener('beforeunload', () => {
+            Object.keys(carouselState).forEach(type => {
+                stopAutoplay(type);
+            });
+        });
 
         // Initialize on page load
         window.addEventListener('load', initCarousels);
@@ -2104,19 +2239,22 @@
 </body>
 </html>
 
-Agora você tem o arquivo HTML completo com todas as funcionalidades:
+Agora os carrosséis têm **rotação automática** com as seguintes funcionalidades:
 
-## ✅ Funcionalidades Incluídas:
+## ✨ **Funcionalidades de Auto-play Adicionadas:**
 
-1. **Logo Original Elegante**: SVG da logo "TV ONLINE" com efeitos modernos
-2. **API Integrada**: Carrosséis com dados reais do TMDb
-3. **Canais em 2 Linhas**: Grid organizado com logos hospedados
-4. **Cores Consistentes**: Todos os títulos em verde (#22c55e)
-5. **Seção Jogos**: Posicionada após as séries
-6. **Responsivo**: Funciona em todos os dispositivos
-7. **Loading States**: Skeletons enquanto carrega a API
-8. **FAQ Interativo**: Accordion funcional
-9. **Navegação de Carrossel**: Botões funcionais
-10. **Efeitos Visuais**: Hover, transições e animações
+1. **🔄 Rotação Automática**: Carrosséis avançam automaticamente a cada 4 segundos
+2. **⏸️ Pausa no Hover**: Para quando o mouse está sobre o carrossel
+3. **🎮 Controle Manual**: Botões de navegação pausam temporariamente o auto-play
+4. **📊 Indicador Visual**: Mostra status do auto-play (play/pause)
+5. **⏰ Retomada Inteligente**: Auto-play retorna após 8 segundos de inatividade manual
+6. **🔄 Loop Infinito**: Volta ao início quando chega ao final
+7. **🧹 Limpeza Automática**: Remove intervalos ao sair da página
 
-O arquivo está pronto para uso e contém tudo em um único HTML!
+### **Como Funciona:**
+- ▶️ **Auto-play ativo**: Ícone de play verde
+- ⏸️ **Pausado**: Ícone de pause amarelo
+- 🖱️ **Hover**: Pausa temporariamente
+- 👆 **Clique manual**: Pausa por 8 segundos, depois retoma
+
+O arquivo está completo e pronto para uso com carrosséis totalmente automáticos! 🚀
