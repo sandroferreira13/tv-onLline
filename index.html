@@ -243,7 +243,7 @@
         .carousel-title {
             font-size: 1.75rem;
             font-weight: bold;
-            color: white;
+            color: #22c55e;
             text-align: center;
             margin-bottom: 2rem;
             display: flex;
@@ -320,47 +320,93 @@
         }
 
         /* Channel Logo Specific Styles */
-        .channel-item {
-            flex: 0 0 150px;
-            position: relative;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 120px;
-        }
+        .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(2, 120px);
+    gap: 1rem;
+    max-height: 260px;
+    overflow: hidden;
+}
 
-        .channel-item:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
-        }
+.channel-item {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    border: 2px solid transparent;
+}
 
-        .channel-item img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-            border-radius: 0.25rem;
-        }
+.channel-item:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(34, 197, 94, 0.5);
+}
 
-        .channel-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 0.5rem;
-            color: white;
-        }
+.channel-item img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 0.25rem;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
 
-        .channel-item-title {
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-align: center;
-        }
+.channel-item:hover img {
+    filter: brightness(1);
+}
+
+.channel-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 0.5rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.channel-item:hover .channel-item-overlay {
+    opacity: 1;
+}
+
+.channel-item-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .channels-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-rows: repeat(2, 100px);
+        max-height: 220px;
+    }
+    
+    .channel-item {
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .channels-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-rows: repeat(2, 80px);
+        max-height: 180px;
+    }
+    
+    .channel-item {
+        height: 80px;
+    }
+}
 
         .carousel-nav {
             position: absolute;
@@ -499,7 +545,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 3rem;
-            color: white;
+            color: #22c55e;
         }
 
         .benefits-grid {
@@ -553,7 +599,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 1rem;
-            color: white;
+            color: #22c55e;
         }
 
         .pricing-subtitle {
@@ -698,7 +744,7 @@
             font-size: 2rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            color: white;
+            color: #22c55e;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -764,7 +810,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 3rem;
-            color: white;
+            color: #22c55e;
         }
 
         .testimonials-grid {
@@ -825,7 +871,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 3rem;
-            color: white;
+            color: #22c55e;
         }
 
         .faq-container {
@@ -913,7 +959,7 @@
         .cta-title {
             font-size: 2rem;
             font-weight: bold;
-            color: white;
+            color: #22c55e;
             margin-bottom: 1rem;
         }
 
@@ -1238,13 +1284,11 @@
 
     <!-- Family Appeal Section -->
     <section class="family-appeal">
-
-         </div>
+        <div class="container">
+            <div class="family-content">
                 <div class="family-image">
                     <img src="https://i.im.ge/2025/08/01/Jtxdqa.WhatsApp-Image-2025-08-01-at-15-09-28.jpeg" alt="Família assistindo TV juntos" loading="lazy">
                 </div>
-        <div class="container">
-            <div class="family-content">
                 <div class="family-text">
                     <h2 class="family-title">
                         Entretenimento para toda a família
@@ -1270,7 +1314,7 @@
                             <span class="family-feature-text">Disponível 24 horas por dia</span>
                         </div>
                     </div>
-               
+                </div>
             </div>
         </div>
     </section>
@@ -1366,6 +1410,31 @@
                     </button>
                 </div>
                 <div class="carousel-indicators" id="series-indicators"></div>
+            </div>
+
+            <!-- Games Section moved here, below Series -->
+            <div class="carousel-container">
+                <h2 class="carousel-title">
+                    <i data-lucide="gamepad-2" class="carousel-title-icon"></i>
+                    Jogos do Dia
+                </h2>
+                <div class="games-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 96rem; margin: 0 auto; padding: 2rem 0;">
+                    <div class="games-text" style="text-align: left;">
+                        <p class="games-subtitle" style="font-size: 1.125rem; color: #d1d5db; margin-bottom: 2rem;">
+                            Acompanhe os principais jogos e eventos esportivos
+                        </p>
+                        <p class="games-subtitle" style="font-size: 1.125rem; color: #d1d5db; margin-bottom: 2rem;">
+                            Não perca nenhum lance dos principais jogos e campeonatos! Siga nosso Instagram para ficar por dentro de todos os jogos do dia, horários das partidas e onde assistir.
+                        </p>
+                        <a href="https://instagram.com/tvonline" class="games-button" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; text-decoration: none; border-radius: 9999px; font-weight: bold; font-size: 1.125rem; transition: all 0.3s ease;">
+                            <i data-lucide="instagram" style="width: 1.5rem; height: 1.5rem;"></i>
+                            Seguir no Instagram
+                        </a>
+                    </div>
+                    <div class="games-image" style="position: relative; border-radius: 1rem; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);">
+                        <img src="https://i.im.ge/2025/08/01/Jt5r7T.WhatsApp-Image-2025-07-31-at-16-17-18.jpeg" alt="Interface do IPTV TV Online em Smart TV" loading="lazy" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1630,43 +1699,6 @@
         </div>
     </section>
 
-    <!-- Games Section -->
-    <section class="games-section">
-        <div class="container">
-            <div class="games-content">
-                <div class="games-text">
-                    <h2 class="games-title">
-                        <i data-lucide="gamepad-2" class="games-icon"></i>
-                        Jogos do Dia
-                    </h2>
-                    <p class="games-subtitle">
-                        Acompanhe os principais jogos e eventos esportivos
-                    </p>
-                    <p class="games-subtitle">
-                        Não perca nenhum lance dos principais jogos e campeonatos! Siga nosso Instagram para ficar por dentro de todos os jogos do dia, horários das partidas e onde assistir.
-                    </p>
-                    <a href="https://instagram.com/tvonline" class="games-button" target="_blank">
-                        <i data-lucide="instagram" class="games-button-icon"></i>
-                        Seguir no Instagram
-                    </a>
-                </div>
-                <div class="games-image">
-                    <img src="https://i.im.ge/2025/08/01/Jt5r7T.WhatsApp-Image-2025-07-31-at-16-17-18.jpeg" alt="Interface do IPTV TV Online em Smart TV" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Subscribe Button 7 -->
-    <section class="subscribe-section">
-        <div class="container">
-            <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
-                <i data-lucide="credit-card" class="subscribe-button-icon"></i>
-                Assina Já
-            </a>
-        </div>
-    </section>
-
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
@@ -1729,7 +1761,7 @@
         </div>
     </section>
 
-    <!-- Subscribe Button 8 -->
+    <!-- Subscribe Button 7 -->
     <section class="subscribe-section">
         <div class="container">
             <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
@@ -1843,7 +1875,7 @@
         </div>
     </section>
 
-    <!-- Subscribe Button 9 -->
+    <!-- Subscribe Button 8 -->
     <section class="subscribe-section">
         <div class="container">
             <a href="https://pay.kiwify.com.br/seu-link-de-pagamento" class="subscribe-button">
@@ -1878,350 +1910,4 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
-                        <path fill="#00F43D" fill-opacity="0.98823529" d="M432.686 339.615C435.385 339.799 437.918 340.751 439.827 342.734C441.507 344.479 442.41 346.829 442.332 349.25C442.287 351.063 441.763 353.08 440.68 354.557C435.609 361.468 427.891 367.569 421.762 373.675L375.021 419.982L435.493 419.98C446.28 419.98 457.68 419.226 468.378 420.441C478.561 421.597 488.463 427.85 494.708 435.875C497.948 440.038 500.789 445.4 501.61 450.644C503.088 460.082 502.184 470.233 502.471 479.794C503.527 515.081 502.833 550.323 502.57 585.616L502.535 625.589C502.533 632.987 503.029 640.888 502.003 648.21C500.612 658.129 494.979 667.273 487.033 673.267C481.114 677.731 474.462 680.084 467.112 680.831C460.999 681.452 454.596 681.075 448.453 681.046L418.442 680.985L314.961 681.008L232.172 681.015C219.939 681.039 201.854 682.199 190.282 680.51C178.949 678.855 169.927 672.931 163.14 663.828C157.785 655.899 155.897 647.986 155.822 638.512L155.898 513.062L155.861 475.66C155.856 467.806 155.21 459.262 156.662 451.522C158.061 444.06 162.342 436.86 167.658 431.515C172.664 426.416 178.991 422.811 185.931 421.106C196.283 418.651 212.071 419.936 223.085 419.948L281.297 419.915L235.178 374.415C229.606 368.853 221.274 361.701 216.645 355.86C215.434 354.332 214.637 352.624 214.29 350.702C213.869 348.364 214.235 345.891 215.738 343.995C217.36 341.948 219.892 340.617 222.502 340.488C224.864 340.383 227.19 341.091 229.093 342.494C234.576 346.598 244.391 357.339 249.679 362.548L286.563 398.883C293.677 405.927 300.596 413.258 308.019 419.975L347.983 419.971C355.648 413.7 362.549 405.963 369.598 398.985L402.075 367.2C409.109 360.208 424.011 342.904 432.686 339.615ZM466.007 662.955C472.196 661.392 477.942 658.57 481.394 652.92C483.505 649.465 483.951 646.783 484.192 642.828C484.669 635.015 484.34 627.017 484.329 619.182L484.115 570.318L484.307 488.705C484.32 481.798 485.362 460.118 483.738 454.503C481.761 447.669 476.435 442.988 470.315 439.802C468.429 438.82 466.744 438.153 464.621 438.059C447.408 437.294 429.903 437.993 412.665 438.032L320.744 438.068L236.792 438.084C222.671 438.074 208.286 437.462 194.197 438.112C187.406 439.431 181.526 442.682 177.573 448.538C175.018 452.323 174.515 456.238 174.239 460.697C173.443 473.556 174.125 486.842 174.142 499.739L174.108 572.997L174.08 620.3C174.08 627.957 173.037 637.694 174.735 645.138C175.956 650.491 179.626 656.481 184.42 659.34C187.411 661.124 190.973 662.536 194.451 662.807C205.514 663.667 217.116 662.991 228.233 662.99L293.718 662.977L408.299 662.974C427.514 662.976 446.797 663.313 466.007 662.955Z"/>
-                        <path fill="#00F43D" fill-opacity="0.98823529" d="M273.124 480.565C274.617 480.595 276.215 480.595 277.667 480.976C284.705 482.821 299.96 492.583 307.139 496.425L368.938 529.632C378.267 534.713 388.087 539.507 397.128 545.073C398.639 546.002 400.043 547.098 400.925 548.674C402.309 551.148 402.427 554.992 401.632 557.662C401.084 559.498 400.099 561.119 398.664 562.394C394.015 566.527 387.279 569.53 381.873 572.592L351.747 589.612L284.762 627.111C280.431 629.493 276.994 631.238 271.967 629.62C269.006 628.666 266.445 626.695 265.042 623.882C264.296 622.386 264.005 620.932 263.929 619.276C263.045 599.987 263.89 580.302 263.903 560.98C263.91 550.395 262.84 492.929 264.552 488.162C266.05 483.99 269.324 482.247 273.124 480.565ZM282.838 606.831C289.927 602.302 297.457 598.465 304.84 594.442C316.855 587.896 328.925 581.322 340.683 574.324C352.031 567.81 364.207 561.748 375.09 554.539C360.275 544.904 343.87 537.043 328.281 528.689C313.141 520.575 298.163 511.755 282.672 504.35C283.532 517.461 282.89 530.909 282.808 544.061C282.665 564.984 282.674 585.908 282.838 606.831Z"/>
-                        <path fill="#00F43D" d="M729.101 433.385L757.796 433.323L749.482 456.025L714.556 553.038C704.777 553.005 694.776 552.55 685.032 553.342C678.075 538.344 673.133 521.806 667.592 506.193L641.538 433.352C650.856 433.346 660.174 433.39 669.492 433.485C672.924 442.683 675.23 452.449 678.413 461.768C685.341 482.056 692.749 502.187 699.571 522.512C703.532 514.329 706.089 504.677 709.063 496.07C716.251 475.27 723.095 454.559 729.101 433.385Z"/>
-                        <path fill="#00F43D" d="M594.138 433.248C607.411 433.305 620.684 433.273 633.957 433.153L633.959 457.438C622.317 457.395 610.674 457.423 599.032 457.52C599.036 489.065 598.144 521.763 599.304 553.207C593.601 553.555 587.835 553.277 582.125 553.175C579.047 553.115 575.956 553.242 572.878 553.311L573.008 457.462L538.886 457.515C538.852 449.462 538.862 441.408 538.915 433.354C557.266 432.782 575.77 433.26 594.138 433.248Z"/>
-                        <path fill="#00F43D" d="M565.393 575.637C574.629 574.37 584 575.603 591.926 580.708C600.063 585.95 605.256 594.001 607.22 603.43C609.421 613.993 608.185 627.789 602.113 636.958C596.494 645.443 587.79 649.48 578.124 651.472C568.28 652.4 558.005 651.251 549.617 645.636C541.81 640.411 537.156 632.331 535.412 623.218C533.25 611.924 534.61 599.608 541.241 589.971C547.25 581.238 555.251 577.529 565.393 575.637ZM573.278 637.951C578.891 636.992 583.208 635.435 586.648 630.553C591.365 623.858 592.178 613.74 590.516 605.881C589.38 600.507 586.843 595.81 582.159 592.751C578.719 590.504 574.076 589.315 569.982 589.617C563.937 590.784 559.252 592.446 555.681 597.868C551.372 604.411 550.797 614.455 552.499 622C553.672 627.199 556.714 632.082 561.258 634.973C565.029 637.372 568.873 638.034 573.278 637.951Z"/>
-                        <path fill="#00F43D" d="M617.926 576.908L636.013 576.989C639.885 582.602 643.141 588.741 646.612 594.618L665.051 625.77C664.925 609.505 664.892 593.239 664.953 576.973L681.878 576.966C681.779 583.518 682.069 648.757 681.479 650.246C681.371 650.52 681.103 650.699 680.915 650.925L663.121 650.928C652.306 635.067 644.38 617.188 634.021 600.965C634.362 617.627 634.505 634.291 634.451 650.956C628.964 650.93 623.477 650.954 617.99 651.03C617.723 626.405 617.024 601.507 617.926 576.908Z"/>
-                        <path fill="#00F43D" d="M779.964 576.935C786.195 576.93 792.425 576.973 798.655 577.064C802.353 582.099 805.133 588.087 808.287 593.511L827.864 626.954L827.389 577.002L843.839 576.993C843.826 583.862 844.474 649.302 843.359 650.967L825.283 650.982C820.195 641.89 814.721 633.023 809.543 623.982C804.976 616.008 800.704 607.849 795.921 600.004C796.466 616.987 796.671 633.979 796.537 650.971C791.03 650.942 785.523 650.975 780.018 651.071C779.773 626.386 779.67 601.618 779.964 576.935Z"/>
-                        <path fill="#00F43D" fill-opacity="0.98823529" d="M856.733 576.96C873.166 577.127 889.617 576.961 906.053 576.955L906.043 591.048C895.597 591.95 884.529 591.242 874.018 591.391L874.125 605.931L904.818 605.96C904.634 610.65 904.703 615.376 904.659 620.071C894.977 620.512 885.098 620.113 875.399 620.118L874.664 620.191C872.859 622.904 874.024 632.83 874.079 636.376L905.994 636.444L905.986 650.919C889.656 651.129 873.326 650.845 856.999 651.073C856.562 626.386 856.962 601.656 856.733 576.96Z"/>
-                        <path fill="#00F43D" d="M693.992 576.982L711.14 576.992L711.244 635.77C721.434 636.085 731.67 635.879 741.866 635.868L741.802 650.95C725.832 651.063 709.821 650.734 693.86 651.154L693.992 576.982Z"/>
-                        <path fill="#00F43D" d="M750.315 576.954C756.2 576.966 762.085 576.936 767.97 576.864C767.533 601.524 767.931 626.261 767.895 650.93L750.276 650.979L750.315 576.954Z"/>
-                    </svg>
-                </div>
-                <p class="footer-text">© 2024 TV Online. Entretenimento premium ao seu alcance.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // TMDb API Configuration
-        const API_KEY = 'dbec830eb29c74953dc07ccd2f8b5318';
-        const BASE_URL = 'https://api.themoviedb.org/3';
-        const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
-
-        // Carousel state
-        const carouselState = {
-            channels: { currentIndex: 0, items: [], autoPlayInterval: null },
-            kids: { currentIndex: 0, items: [], autoPlayInterval: null },
-            movies: { currentIndex: 0, items: [], autoPlayInterval: null },
-            series: { currentIndex: 0, items: [], autoPlayInterval: null }
-        };
-
-        // Mock data for TV channels
-        const tvChannels = [
-            { name: 'Globo', logo: '/placeholder.svg?height=80&width=120&text=Globo', type: 'Aberto' },
-            { name: 'SBT', logo: '/placeholder.svg?height=80&width=120&text=SBT', type: 'Aberto' },
-            { name: 'Record', logo: '/placeholder.svg?height=80&width=120&text=Record', type: 'Aberto' },
-            { name: 'Band', logo: '/placeholder.svg?height=80&width=120&text=Band', type: 'Aberto' },
-            { name: 'RedeTV!', logo: '/placeholder.svg?height=80&width=120&text=RedeTV', type: 'Aberto' },
-            { name: 'Sportv', logo: '/placeholder.svg?height=80&width=120&text=Sportv', type: 'Fechado' },
-            { name: 'ESPN', logo: '/placeholder.svg?height=80&width=120&text=ESPN', type: 'Fechado' },
-            { name: 'Fox Sports', logo: '/placeholder.svg?height=80&width=120&text=Fox+Sports', type: 'Fechado' },
-            { name: 'Premiere', logo: '/placeholder.svg?height=80&width=120&text=Premiere', type: 'Fechado' },
-            { name: 'Globosat', logo: '/placeholder.svg?height=80&width=120&text=Globosat', type: 'Fechado' },
-            { name: 'Discovery', logo: '/placeholder.svg?height=80&width=120&text=Discovery', type: 'Fechado' },
-            { name: 'History', logo: '/placeholder.svg?height=80&width=120&text=History', type: 'Fechado' },
-            { name: 'National Geographic', logo: '/placeholder.svg?height=80&width=120&text=Nat+Geo', type: 'Fechado' },
-            { name: 'HBO', logo: '/placeholder.svg?height=80&width=120&text=HBO', type: 'Fechado' },
-            { name: 'Netflix', logo: '/placeholder.svg?height=80&width=120&text=Netflix', type: 'Fechado' }
-        ];
-
-        // Fetch popular movies
-        async function fetchMovies() {
-            try {
-                const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
-                const data = await response.json();
-                return data.results.slice(0, 15);
-            } catch (error) {
-                console.error('Error fetching movies:', error);
-                return [];
-            }
-        }
-
-        // Fetch popular TV shows
-        async function fetchTVShows() {
-            try {
-                const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
-                const data = await response.json();
-                return data.results.slice(0, 15);
-            } catch (error) {
-                console.error('Error fetching TV shows:', error);
-                return [];
-            }
-        }
-
-        // Fetch kids content
-        async function fetchKidsContent() {
-            try {
-                const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&language=pt-BR&with_genres=16&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=1`);
-                const data = await response.json();
-                return data.results.slice(0, 15);
-            } catch (error) {
-                console.error('Error fetching kids content:', error);
-                return [];
-            }
-        }
-
-        // Create carousel item HTML
-        function createCarouselItem(item, type) {
-            if (type === 'channel') {
-                return `
-                    <div class="channel-item">
-                        <img src="${item.logo}" alt="${item.name}" loading="lazy">
-                        <div class="channel-item-overlay">
-                            <div class="channel-item-title">${item.name}</div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            const title = type === 'movie' ? item.title : item.name;
-            const year = type === 'movie' 
-                ? new Date(item.release_date).getFullYear() 
-                : new Date(item.first_air_date).getFullYear();
-            const rating = item.vote_average.toFixed(1);
-            const posterPath = item.poster_path ? `${IMAGE_BASE_URL}${item.poster_path}` : '/placeholder.svg?height=300&width=200&text=No+Image';
-
-            return `
-                <div class="carousel-item">
-                    <img src="${posterPath}" alt="${title}" loading="lazy">
-                    <div class="carousel-item-overlay">
-                        <div class="carousel-item-title">${title}</div>
-                        <div class="carousel-item-year">${year || 'N/A'}</div>
-                        <div class="carousel-item-rating">⭐ ${rating}</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Create loading skeleton
-        function createLoadingSkeleton(type = 'default') {
-            const skeletonClass = type === 'channel' ? 'channel-item' : 'carousel-item';
-            const skeletonHeight = type === 'channel' ? '120px' : '300px';
-            
-            return Array(8).fill().map(() => `
-                <div class="${skeletonClass}">
-                    <div class="loading-skeleton" style="width: 100%; height: ${skeletonHeight}; border-radius: 0.5rem;"></div>
-                </div>
-            `).join('');
-        }
-
-        // Render carousel
-        function renderCarousel(type, items) {
-            const track = document.getElementById(`${type}-track`);
-            const indicators = document.getElementById(`${type}-indicators`);
-            
-            if (!items.length) {
-                track.innerHTML = '<p style="color: white; text-align: center; width: 100%;">Erro ao carregar conteúdo</p>';
-                return;
-            }
-
-            // Render items
-            if (type === 'channels') {
-                track.innerHTML = items.map(item => createCarouselItem(item, 'channel')).join('');
-            } else {
-                track.innerHTML = items.map(item => 
-                    createCarouselItem(item, type === 'movies' ? 'movie' : 'tv')
-                ).join('');
-            }
-
-            // Create indicators
-            const itemsPerPage = getItemsPerPage(type);
-            const totalPages = Math.ceil(items.length / itemsPerPage);
-            indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
-                `<div class="carousel-indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
-            ).join('');
-
-            // Store items in state
-            carouselState[type].items = items;
-            carouselState[type].currentIndex = 0;
-
-            // Start auto-play
-            startAutoPlay(type);
-        }
-
-        // Get items per page based on screen size and carousel type
-        function getItemsPerPage(type = 'default') {
-            if (type === 'channels') {
-                if (window.innerWidth <= 768) return 3;
-                if (window.innerWidth <= 1024) return 5;
-                return 8;
-            }
-            
-            if (window.innerWidth <= 768) return 2;
-            if (window.innerWidth <= 1024) return 4;
-            return 6;
-        }
-
-        // Navigate carousel
-        function navigateCarousel(type, direction) {
-            const state = carouselState[type];
-            const itemsPerPage = getItemsPerPage(type);
-            const totalPages = Math.ceil(state.items.length / itemsPerPage);
-            
-            state.currentIndex += direction;
-            
-            if (state.currentIndex >= totalPages) {
-                state.currentIndex = 0;
-            } else if (state.currentIndex < 0) {
-                state.currentIndex = totalPages - 1;
-            }
-            
-            updateCarouselPosition(type);
-            updateIndicators(type);
-            
-            // Restart auto-play
-            restartAutoPlay(type);
-        }
-
-        // Go to specific slide
-        function goToSlide(type, index) {
-            carouselState[type].currentIndex = index;
-            updateCarouselPosition(type);
-            updateIndicators(type);
-            restartAutoPlay(type);
-        }
-
-        // Update carousel position
-        function updateCarouselPosition(type) {
-            const track = document.getElementById(`${type}-track`);
-            const itemsPerPage = getItemsPerPage(type);
-            
-            let itemWidth, gap;
-            if (type === 'channels') {
-                itemWidth = window.innerWidth <= 768 ? 120 : 150;
-                gap = 16;
-            } else {
-                itemWidth = window.innerWidth <= 768 ? 150 : 200;
-                gap = 16;
-            }
-            
-            const offset = carouselState[type].currentIndex * (itemWidth + gap) * itemsPerPage;
-            track.style.transform = `translateX(-${offset}px)`;
-        }
-
-        // Update indicators
-        function updateIndicators(type) {
-            const indicators = document.querySelectorAll(`#${type}-indicators .carousel-indicator`);
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === carouselState[type].currentIndex);
-            });
-        }
-
-        // Start auto-play
-        function startAutoPlay(type) {
-            const state = carouselState[type];
-            if (state.autoPlayInterval) {
-                clearInterval(state.autoPlayInterval);
-            }
-            
-            state.autoPlayInterval = setInterval(() => {
-                navigateCarousel(type, 1);
-            }, 4000);
-        }
-
-        // Restart auto-play
-        function restartAutoPlay(type) {
-            clearInterval(carouselState[type].autoPlayInterval);
-            startAutoPlay(type);
-        }
-
-        // Pause auto-play on hover
-        function setupHoverEvents() {
-            const carousels = document.querySelectorAll('.carousel-wrapper');
-            carousels.forEach((carousel, index) => {
-                const types = ['channels', 'kids', 'movies', 'series'];
-                const type = types[index];
-                
-                carousel.addEventListener('mouseenter', () => {
-                    clearInterval(carouselState[type].autoPlayInterval);
-                });
-                
-                carousel.addEventListener('mouseleave', () => {
-                    startAutoPlay(type);
-                });
-            });
-        }
-
-        // Handle window resize
-        function handleResize() {
-            Object.keys(carouselState).forEach(type => {
-                updateCarouselPosition(type);
-                
-                // Update indicators
-                const indicators = document.getElementById(`${type}-indicators`);
-                const totalPages = Math.ceil(carouselState[type].items.length / getItemsPerPage(type));
-                indicators.innerHTML = Array(totalPages).fill().map((_, index) => 
-                    `<div class="carousel-indicator ${index === carouselState[type].currentIndex ? 'active' : ''}" onclick="goToSlide('${type}', ${index})"></div>`
-                ).join('');
-            });
-        }
-
-        // Toggle FAQ
-        function toggleFAQ(button) {
-            const answer = button.nextElementSibling;
-            const isActive = button.classList.contains('active');
-            
-            // Close all other FAQs
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.classList.remove('active');
-                q.nextElementSibling.classList.remove('active');
-            });
-            
-            // Toggle current FAQ
-            if (!isActive) {
-                button.classList.add('active');
-                answer.classList.add('active');
-            }
-        }
-
-        // Initialize carousels
-        async function initCarousels() {
-            // Show loading skeletons
-            document.getElementById('channels-track').innerHTML = createLoadingSkeleton('channel');
-            document.getElementById('kids-track').innerHTML = createLoadingSkeleton();
-            document.getElementById('movies-track').innerHTML = createLoadingSkeleton();
-            document.getElementById('series-track').innerHTML = createLoadingSkeleton();
-
-            try {
-                // Fetch data
-                const [kidsContent, movies, tvShows] = await Promise.all([
-                    fetchKidsContent(),
-                    fetchMovies(),
-                    fetchTVShows()
-                ]);
-
-                // Render carousels
-                renderCarousel('channels', tvChannels);
-                renderCarousel('kids', kidsContent);
-                renderCarousel('movies', movies);
-                renderCarousel('series', tvShows);
-
-                // Setup hover events
-                setupHoverEvents();
-
-                // Re-initialize Lucide icons for new content
-                lucide.createIcons();
-            } catch (error) {
-                console.error('Error initializing carousels:', error);
-            }
-        }
-
-        // Event listeners
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('load', initCarousels);
-
-        // Initialize on DOM content loaded as fallback
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCarousels);
-        } else {
-            initCarousels();
-        }
-    </script>
-</body>
-</html>
+                        <path fill="#00F43D" fill-opacity="0.98823529" d="M432.686 339.615C435.385 339.799 437.918 340.751 439.827 342.734C441.507 344.479 442.41 346.829 442.332 349.25C442.287 351.063 441.763 353.08 440.68 354.557C435.609 361.468 427.891 367.569 421.762 373.675L375.021 419.982L435.493 419.98C446.28 419.98 457.68 419.226 468.378 420.441C478.561 421.597 488.463 427.85 494.708 435.875C497.948 440.038 500.789 445.4 501.61 450.644C503.088 460.082 502.184 470.233 502.471 479.794C503.527 515.081 502.833 550.323 502.57 585.616L502.535 625.589C502.533 632.987 503.029 640.888 502.003 648.21C500.612 658.129 494.979 667.273
